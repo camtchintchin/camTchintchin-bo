@@ -1,0 +1,23 @@
+.modal {
+  input,select {
+    border: 1px solid #004156;
+    border-radius: 10px;
+  }
+  .modal-header,.modal-footer {
+    border: 0;
+  }
+  .custom-select {
+    width: 66%;
+    float: left;
+  }
+  .modal-footer {
+    justify-content: center;
+  }
+  .btn-secondary {
+    border-radius: 10px !important;
+  }
+
+  button, [type=button], [type=reset], [type=submit], [role=button] {
+    color: #ffffff;
+  } 
+}

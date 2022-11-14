@@ -1,0 +1,16 @@
+<svg id="Groupe_3207" data-name="Groupe 3207" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="87.877" height="73.3" viewBox="0 0 87.877 73.3">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#768801"/>
+      <stop offset="1" stop-color="#ffd942"/>
+    </linearGradient>
+  </defs>
+  <g id="Groupe_2373" data-name="Groupe 2373" transform="translate(0 13.019)" opacity="0.32">
+    <ellipse id="Ellipse_13" data-name="Ellipse 13" cx="13.04" cy="13.04" rx="13.04" ry="13.04" transform="translate(10.824 0)" fill="url(#linear-gradient)"/>
+    <path id="Rectangle_27" data-name="Rectangle 27" d="M23.864,0h0A23.864,23.864,0,0,1,47.728,23.864V29.5a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V23.864A23.864,23.864,0,0,1,23.864,0Z" transform="translate(0 30.783)" fill="url(#linear-gradient)"/>
+  </g>
+  <g id="Groupe_2372" data-name="Groupe 2372" transform="translate(29.841 0)">
+    <ellipse id="Ellipse_13-2" data-name="Ellipse 13" cx="15.856" cy="15.856" rx="15.856" ry="15.856" transform="translate(13.162)" fill="url(#linear-gradient)"/>
+    <path id="Rectangle_27-2" data-name="Rectangle 27" d="M29.018,0h0A29.018,29.018,0,0,1,58.036,29.018v6.85a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0v-6.85A29.018,29.018,0,0,1,29.018,0Z" transform="translate(0 37.431)" fill="url(#linear-gradient)"/>
+  </g>
+</svg>

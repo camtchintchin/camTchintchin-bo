@@ -1,0 +1,11 @@
+<svg id="Groupe_1906" data-name="Groupe 1906" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" y1="0.54" x2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#004156" stop-opacity="0"/>
+      <stop offset="1" stop-color="#004156" stop-opacity="0.961"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" y1="0.46" y2="1" xlink:href="#linear-gradient"/>
+  </defs>
+  <rect id="Rectangle_1804" data-name="Rectangle 1804" width="1920" height="1080" opacity="0.152" fill="url(#linear-gradient)"/>
+  <rect id="Rectangle_1671" data-name="Rectangle 1671" width="1920" height="1080" opacity="0.152" fill="url(#linear-gradient-2)"/>
+</svg>
