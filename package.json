@@ -27,6 +27,7 @@
     "express": "^4.18.2",
     "jquery": "^3.6.1",
     "js-cookie": "^3.0.1",
+    "leaflet": "^1.9.2",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "node-sessionstorage": "^1.0.0",
@@ -38,9 +39,11 @@
     "vee-validate": "3",
     "vue": "^2.7.10",
     "vue-chartjs": "^4.1.2",
+    "vue-choropleth": "^0.3.1",
     "vue-lodash": "^2.1.2",
     "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.7.10",
+    "vue2-leaflet": "^2.7.1",
     "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
@@ -49,6 +52,7 @@
     "@nuxtclub/slugify": "^1.1.0",
     "@types/cookie-parser": "^1.4.3",
     "@types/crypto-js": "^4.1.1",
+    "@types/leaflet": "^1.9.0",
     "@types/node": "^18.11.9",
     "sass": "^1.55.0",
     "sass-loader": "^10.1.1"

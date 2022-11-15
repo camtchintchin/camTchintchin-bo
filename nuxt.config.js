@@ -157,7 +157,9 @@ export default {
     { src: '~/plugins/axios' },
     { src: '~/plugins/moment.js', ssr: false },
     { src: '~/plugins/vee-val.ts', ssr: false },
-    { src: '~/plugins/persistedState.client.js' }
+    { src: '~/plugins/persistedState.client.js' },
+    { src: '~plugins/leaflet.js', ssr: false },
+
     // { src: '~/plugins/lodash.js'},
 
   ],

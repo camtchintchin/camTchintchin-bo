@@ -85,6 +85,22 @@
                   <div class="card-header bg-white">
                   </div>
                   <div class="card-body">
+                    <div id="map-wrap">
+                      <template>
+                        <l-map style="height:500px" :zoom="zoom" :center="[gpsLatitude,gpsLongitude]">
+                          <l-tile-layer :url="getUrl()" :attribution="attribution"></l-tile-layer>
+<!--                          <l-marker :lat-lng="[gpsLatitude,gpsLongitude]"></l-marker>-->
+                          <l-choropleth-layer  :data="countyData" titleKey="name" idKey="Id" :value="value"  geojsonIdKey="GEO_ID" :geojson="statesData" :colorScale="colorScale">
+                            <template slot-scope="props">
+                              <l-info-control :item="props.currentItem" :unit="props.unit" title="County" placeholder="Hover over a County"/>
+                              <l-reference-chart title="Covid-19 Dashboard" :colorScale="colorScale" :min="props.min" :max="props.max" position="topright"/>
+                            </template>
+                          </l-choropleth-layer>
+                        </l-map>
+
+                      </template>
+                    </div>
+
 <!--                    <img src="~/assets/images/carteCi.png" width="50px" >-->
 <!--                    <canvas id="barChart_3"></canvas>-->
                   </div>
@@ -118,15 +134,38 @@ import Vue from "vue";
 import SideBar from "@/components/SideBar.vue";
 import {mapGetters} from "vuex";
 import ResultSearch from "@/components/modal/ResultSearch.vue";
+import L from 'leaflet';
+import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+import { InfoControl, ReferenceChart, ChoroplethLayer } from 'vue-choropleth';
+import {MapData} from "@/helpers/mapData"
+
 
 export default Vue.extend({
 
   name: "default",
   middleware:'isAuthenticate',
+  data(){
+    return{
+       colorScale:MapData.getColorScale(),
+       countyData :MapData.getCountyData(),
+      value:MapData.getValue(),
+      statesData:MapData.getStatesData(),
 
+      id : "mapbox/streets-v11",
+      accessToken : "pk.eyJ1Ijoibm9lZGplZGplMTQiLCJhIjoiY2w1anJwNWZsMDJ5ZDNjcWkwZ3poaG5hMCJ9.0gEdr3JbUexUhqFYwh6Pnw",
+      zoom : 10,
+      gpsLatitude: 5.3160168,
+      gpsLongitude: -4.0171443,
+      attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }
+  },
   components:{
     SideBar,
-    ResultSearch
+    ResultSearch,
+    LMap,
+    'l-info-control': InfoControl,
+    'l-reference-chart': ReferenceChart,
+    'l-choropleth-layer': ChoroplethLayer
   },
   // props:{
   //   name,
@@ -135,7 +174,7 @@ export default Vue.extend({
   mounted() {
     this.initMophy()
     document.body.style.zoom = "85%";
-    this.testFunc()
+
   },
   computed:{
     ...mapGetters(["loggedInUser"]),
@@ -148,10 +187,10 @@ export default Vue.extend({
       "use strict";
       Mophy.init();
     },
-    testFunc(){
-      return this.$store.getters.loggedInUser
-
+    getUrl() {
+      return `https://api.mapbox.com/styles/v1/${this.id}/tiles/{z}/{x}/{y}?access_token=${this.accessToken}`
     },
+
     async logout() {
       // @ts-ignore
       // this.$accessor.usersManagement.assignment.REMOVE_USER_ASSIGEMENT();
