@@ -42,10 +42,10 @@
                 <b-row >
                   <b-col md="8">
                     <p class="color-blue" style="font-weight: 600;">Nombre total de producteurs recencés</p>
-                    <h1 class="color-green font-weight-bold ">980 894</h1>
-                    <div class="details-link">
-                      <nuxt-link to="/gestion-users/creer-role" class="details-link">Voir détails</nuxt-link>
-                    </div>
+                    <h1 class="color-green font-weight-bold">980 894</h1>
+<!--                    <div class="details-link">-->
+<!--                      <nuxt-link to="#" class="details-link">Voir détails</nuxt-link>-->
+<!--                    </div>-->
                   </b-col>
                   <b-col md="4" class="mt-5">
                     <img
@@ -71,9 +71,9 @@
                   <b-col md="8">
                     <p class="color-blue" style="font-weight: 600;">Nombre total de cartes distribuées</p>
                     <h1 class="color-green font-weight-bold pt-3">489 891</h1>
-                    <div class="details-link pt-1">
-                      <nuxt-link to="/gestion-users/creer-role" class="details-link">Voir détails</nuxt-link>
-                    </div>
+<!--                    <div class="details-link pt-1">-->
+<!--                      <nuxt-link to="#" class="details-link">Voir détails</nuxt-link>-->
+<!--                    </div>-->
                   </b-col>
                   <b-col md="4" class="mt-5">
                     <img
@@ -128,9 +128,9 @@
                   <b-col md="8">
                     <p class="color-blue" style="font-weight: 600;">Nombre total d’agents</p>
                     <h1 class="color-green font-weight-bold ">901</h1>
-                    <div class="details-link">
-                      <nuxt-link to="/gestion-users/creer-role" class="details-link">Voir détails</nuxt-link>
-                    </div>
+<!--                    <div class="details-link">-->
+<!--                      <nuxt-link to="#" class="details-link">Voir détails</nuxt-link>-->
+<!--                    </div>-->
                   </b-col>
                   <b-col md="4" class="mt-5">
                     <img

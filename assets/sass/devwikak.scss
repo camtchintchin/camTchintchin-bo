@@ -103,6 +103,10 @@ tbody tr td:nth-child(2) {
 
 .table tbody tr  {
   white-space: nowrap;
+  td{
+    color:#004156;
+    font: normal normal 900 20px Poppins;
+  }
 }
 .input--file:hover,
 .custom-file-label:hover,

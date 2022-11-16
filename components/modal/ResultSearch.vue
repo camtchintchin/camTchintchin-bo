@@ -146,6 +146,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#modalResultSearch{
+  z-index: 1;
+}
 table{
   padding-bottom: 0px;
   //border: blue 1px solid;
