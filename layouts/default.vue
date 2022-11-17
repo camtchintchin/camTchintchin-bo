@@ -69,6 +69,7 @@
       <div  class="container-fluid">
         <div class="row mainDiv">
           <div class="col-md-6 div-left">
+            <SearchComponent/>
             <Nuxt />
           </div>
 
@@ -93,7 +94,6 @@
         </div>
 
 
-        <ResultSearch/>
 
       </div>
     </div>
@@ -114,8 +114,8 @@
 import Vue from "vue";
 import SideBar from "@/components/SideBar.vue";
 import {mapGetters} from "vuex";
-import ResultSearch from "@/components/modal/ResultSearch.vue";
 import MapComponent from "@/components/MapComponent.vue";
+import SearchComponent from "@/components/SearchComponent.vue";
 
 
 
@@ -133,8 +133,8 @@ export default Vue.extend({
   },
   components:{
     SideBar,
-    ResultSearch,
     MapComponent,
+    SearchComponent
 
   },
   // props:{

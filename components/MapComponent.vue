@@ -12,7 +12,6 @@
 
           </l-control>
           <l-reference-chart title="Cartes Distribuées" :colorScale="colorScale" :min="50" :max="50000" position="topright"/>
-
           <l-geo-json :geojson="statesData" :options="mapOptions" :data="countyData" titleKey="name" idKey="GEO_ID" :value="value" ref="geolayer"></l-geo-json>
         </l-map>
 

@@ -1,38 +1,8 @@
 <template>
   <div>
+
     <b-row>
       <b-col lg="12">
-        <b-row>
-          <div class="basic-dropdown">
-            <!-- Default dropright button -->
-            <div class="btn-group dropright mb-5">
-              <button type="button" class="btn-search" data-toggle="dropdown">
-                Rechercher un producteur
-                <i class="fa fa-search" aria-hidden="true"> </i>
-              </button>
-              <div class="dropdown-menu dropdown-search">
-                <form action="#">
-                  <div class="col">
-                    <input type="text" class="form-control text-center" placeholder="Matricule">
-                  </div>
-                  <div class="col">
-                    <input type="text" class="form-control text-center" placeholder="Numéro tel.">
-                  </div>
-                  <div class="col">
-                    <input type="text" class="form-control text-center" placeholder="Nom & prénoms">
-                  </div>
-
-
-                </form>
-                <div class="search col justify-content-center text-center">
-                  <button  v-b-modal.modalResultSearch class="btn-search  mb-2">Valider</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Split dropright button -->
-          </div>
-        </b-row>
         <b-row class="mb-4">
           <b-col lg="6" class="pl-0">
             <div class="h-100 card-shadow" >
@@ -43,9 +13,9 @@
                   <b-col md="8">
                     <p class="color-blue" style="font-weight: 600;">Nombre total de producteurs recencés</p>
                     <h1 class="color-green font-weight-bold">980 894</h1>
-<!--                    <div class="details-link">-->
-<!--                      <nuxt-link to="#" class="details-link">Voir détails</nuxt-link>-->
-<!--                    </div>-->
+                    <!--                    <div class="details-link">-->
+                    <!--                      <nuxt-link to="#" class="details-link">Voir détails</nuxt-link>-->
+                    <!--                    </div>-->
                   </b-col>
                   <b-col md="4" class="mt-5">
                     <img
@@ -71,9 +41,9 @@
                   <b-col md="8">
                     <p class="color-blue" style="font-weight: 600;">Nombre total de cartes distribuées</p>
                     <h1 class="color-green font-weight-bold pt-3">489 891</h1>
-<!--                    <div class="details-link pt-1">-->
-<!--                      <nuxt-link to="#" class="details-link">Voir détails</nuxt-link>-->
-<!--                    </div>-->
+                    <!--                    <div class="details-link pt-1">-->
+                    <!--                      <nuxt-link to="#" class="details-link">Voir détails</nuxt-link>-->
+                    <!--                    </div>-->
                   </b-col>
                   <b-col md="4" class="mt-5">
                     <img
@@ -128,9 +98,9 @@
                   <b-col md="8">
                     <p class="color-blue" style="font-weight: 600;">Nombre total d’agents</p>
                     <h1 class="color-green font-weight-bold ">901</h1>
-<!--                    <div class="details-link">-->
-<!--                      <nuxt-link to="#" class="details-link">Voir détails</nuxt-link>-->
-<!--                    </div>-->
+                    <!--                    <div class="details-link">-->
+                    <!--                      <nuxt-link to="#" class="details-link">Voir détails</nuxt-link>-->
+                    <!--                    </div>-->
                   </b-col>
                   <b-col md="4" class="mt-5">
                     <img

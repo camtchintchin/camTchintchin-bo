@@ -26,7 +26,7 @@
 
               ref="table"
               :fields="fields"
-              :items="items"
+              :items="provider"
               :per-page="perPage"
               show-empty
 
@@ -76,6 +76,11 @@
                 </div>
               </template>
             </b-table>
+            <b-pagination
+              v-model="currentPage"
+              :total-rows="totalRows"
+              :per-page="perPage"
+            ></b-pagination>
           </div>
 
         </div>
@@ -92,56 +97,109 @@
 
 </template>
 
-<script>
+<script lang="ts">
 import InfoCustomer from "./InfoCustomer";
-export default {
-  name: "ResultSearch",
-  components:{
-    InfoCustomer
-  },
-  data(){
-    return{
-      showInfo:false,
-      fields: ['nom', 'matricule', 'locatite','delegation','contact'],
-      items: [
-        {
-          nom: 'Kouassi Basile',
-          matricule: '01480300478',
-          locatite: 'Atta Kouadiokro',
-          delegation: 'Abengourou',
-          contact: '07 89 213 901'
-        },
-        {
-          isActive: true,
-          nom: 'Kouassi Basile',
-          matricule: '01480300478',
-          locatite: 'Atta Kouadiokro',
-          delegation: 'Abengourou',
-          contact: '07 89 213 901'
-        },
-        {
-          nom: 'Kouassi Basile',
-          matricule: '01480300478',
-          locatite: 'Atta Kouadiokro',
-          delegation: 'Abengourou',
-          contact: '07 89 213 901'
-        }
-        ]
-    }
-  },
-  methods:{
-    rowClickHandler(item) {
-      console.log(item)
-      // this.showInfo =true
-      return this.$bvModal.show('modalInfoCustomer');
-    },
-    closeModal(){
-      // this.showInfo =false
-      return this.$bvModal.hide('modalResultSearch');
+import {Component, Prop, Vue} from "nuxt-property-decorator";
+import _ from "lodash";
+Vue.component("InfoCustomer", InfoCustomer);
 
-    },
+@Component
+export default class CompleteVersion extends Vue  {
+
+  // components={
+  //   InfoCustomer
+  // }
+  // props:{
+  //   customerList:{
+  //       type: {},
+  //       required:true
+  //   }
+  // },
+  @Prop({required: true, default: () => ("")})
+  customerList!: string;
+
+  name= "ResultSearch"
+  totalRows = 0;
+  perPage = 5;
+  currentPage = 1;
+  json_data = []
+  showInfo=false
+  // customerList = this.customerList
+  fields= [
+    {key: "firstname", label: "Nom", thAttr: {"searchKey": "firstname"}},
+    {key: "lastname", label: "Prenom", thAttr: {"searchKey": "firstname"}},
+    {key: "matricule", label: "Matricule", thAttr: {"searchKey": "matricule"}},
+    {key: "residence", label: "Localité", thAttr: {"searchKey": "residence"}},
+    // {key: "city", label: "Délégation", thAttr: {"searchKey": "location"} , formatter:(value:any)=>{ return value ?? "value" }},
+    {key: "phoneNumber", label: "Contact", thAttr: {"searchKey": "phoneNumber"}},
+    // {
+    //   key: "actions",
+    //   label: "Actions",
+    //   thAttr: {"canSee": "Voir"}
+    // }
+    // { key: "", label: "Nbre Transac" },
+    // { key: "", label: "Commission" },
+  ]
+  // fields: ['nom', 'matricule', 'locatite','delegation','contact'],
+  mounted() {
+  }
+  onFiltered(filteredItems: any) {
+    // Trigger pagination to update the number of buttons/pages due to filtering
+    this.totalRows = filteredItems.length;
+    this.currentPage = 1;
+  }
+  provider(ctx: { currentPage: number, perPage: number }): any {
+    let initPost= {}
+    console.log("current",this.currentPage)
+    if (this.currentPage === 1){
+       return this.customerList
+    }else{
+       initPost = {
+        "contact":"",
+        "matricule": "",
+        "fullname": "",
+        "departmentCode": "",
+        "fromDate": "",
+        "toDate": "",
+        "page": this.currentPage - 1,
+        "size": this.perPage
+      };
+    }
+
+    const promise = this.$axios.$post("/findProducer", initPost);
+    return promise.then((data) => {
+      // console.log("provider");
+      //console.log(data);
+      let items = {} as any;
+      items = data.object;
+      this.json_data = data.object;
+      this.totalRows = data.totalNumberOfElements;
+      console.log("iteme",items)
+
+      // Here we could override the busy state, setting isBusy to false
+      // this.isBusy = false
+      return (items);
+    }).catch(() => {
+      console.log("erreur")
+      return [];
+    });
 
   }
+  rowClickHandler(item: any) {
+    console.log(item)
+
+    console.log('log fiules',this.customerList)
+
+    // this.showInfo =true
+    return this.$bvModal.show('modalInfoCustomer');
+  }
+  closeModal(){
+    // this.showInfo =false
+    return this.$bvModal.hide('modalResultSearch');
+
+  }
+
+
 }
 </script>
 

@@ -50,10 +50,11 @@ export default function ({ $axios }: { $axios: any }, inject: Inject) {
           console.log("token non expiré")
           config.headers.Authorization = `Bearer ${token}`
         }else if(token && expiration == true){
-          console.log("token expiré")
+          console.log("token expiré",token)
           instance.post(`${process.env.backend_api_url}/users/refreshToken`,{
             refreshToken: refreshToken
           }).then(function(response){
+            console.log("token",response)
             //console.log("retour expire token", response);
             localStorage.setItem("access_token",response.data.access_token)
             const expires_token = response.data.expires_in - 300

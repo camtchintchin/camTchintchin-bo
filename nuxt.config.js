@@ -159,6 +159,7 @@ export default {
     { src: '~/plugins/vee-val.ts', ssr: false },
     { src: '~/plugins/persistedState.client.js' },
     { src: '~plugins/leaflet.js', ssr: false },
+    { src: '~plugins/numericValue.ts', ssr: false },
 
     // { src: '~/plugins/lodash.js'},
 
