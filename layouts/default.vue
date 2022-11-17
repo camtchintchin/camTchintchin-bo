@@ -83,55 +83,7 @@
               <div class="col-xl-12 col-lg-12 col-sm-12">
                 <div class="card">
                   <div class="card-body">
-                    <div id="map-wrap" class="map">
-<!--                      <l-map-->
-<!--                        ref="mymap"-->
-<!--                        :zoom="zoom"-->
-<!--                        :center="[gpsLatitude,gpsLongitude]"-->
-<!--                        :options="{ zoomControl: false, maxZoom: 18 }"-->
-<!--                        style="height:80vh"-->
-<!--                      >-->
-<!--                        <l-tile-layer :url="getUrl()" :attribution="attribution"></l-tile-layer>&ndash;&gt;-->
-<!--                        <l-control-scale-->
-<!--                          position="bottomright"-->
-<!--                          :imperial="true"-->
-<!--                          :metric="true"-->
-<!--                        ></l-control-scale>-->
-<!--                        <l-control-zoom position="bottomright"></l-control-zoom>-->
-<!--                        <l-info-control :item="table.item" :unit="table.unit" title="Délégation Régionale" placeholder="Survoler la DR"/>-->
-
-<!--                        <l-geo-json-->
-<!--                          :geojson="statesData"-->
-<!--                          :options="mapOptions"-->
-<!--                          :colorScale="colorScale"-->
-<!--                          :data="countyData"-->
-<!--                          titleKey="name"-->
-<!--                          idKey="Id"-->
-<!--                          :value="value"-->
-<!--                          ref="geolayer">-->
-<!--&lt;!&ndash;                          <template slot-scope="props">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <l-info-control :item="props.currentItem" :unit="props.unit" title="Délégation Régionale" placeholder="Survoler la DR"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <l-reference-chart title="Cartes Distribuées" :colorScale="colorScale" :min="props.min" :max="props.max" position="topright"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                          </template>&ndash;&gt;-->
-<!--                        </l-geo-json>-->
-<!--                      </l-map>-->
-                      <template>
-                        <l-map style="height:80vh" :zoom="zoom" :center="[gpsLatitude,gpsLongitude]"  :option="mapOptions" v-on:click="getZoom">
-                          <l-tile-layer :url="getUrl()" :attribution="attribution"></l-tile-layer>
-<!--                          <l-marker :lat-lng="[gpsLatitude,gpsLongitude]"></l-marker>&ndash;&gt;-->
-                          <l-choropleth-layer  :data="countyData" titleKey="name" idKey="Id" :value="value"  geojsonIdKey="GEO_ID" :geojson="statesData" :colorScale="colorScale" @mouseover="getZoom">
-                            <template slot-scope="props" >
-                              <l-info-control :item="props.currentItem" :unit="props.unit" title="Délégation Régionale" placeholder="Survoler la DR" @mouseover="getZoom"/>
-                              <l-reference-chart title="Cartes Distribuées" :colorScale="colorScale" :min="props.min" :max="props.max" position="topright"/>
-                            </template>
-                          </l-choropleth-layer>
-                        </l-map>
-
-                      </template>
-                    </div>
-
-<!--                    <img src="~/assets/images/carteCi.png" width="50px" >-->
-<!--                    <canvas id="barChart_3"></canvas>-->
+                    <MapComponent/>
                   </div>
                 </div>
               </div>
@@ -163,10 +115,8 @@ import Vue from "vue";
 import SideBar from "@/components/SideBar.vue";
 import {mapGetters} from "vuex";
 import ResultSearch from "@/components/modal/ResultSearch.vue";
-import L from 'leaflet';
-import { LMap, LTileLayer, LMarker, LGeoJson, LControlLayers, LControlZoom } from 'vue2-leaflet';
-import { InfoControl, ReferenceChart, ChoroplethLayer } from 'vue-choropleth';
-import {MapData} from "@/helpers/mapData"
+import MapComponent from "@/components/MapComponent.vue";
+
 
 
 export default Vue.extend({
@@ -176,32 +126,7 @@ export default Vue.extend({
   data(){
     return{
       // geojson,
-      mapOptions: {
-        onEachFeature: (feature, layer) => {
-          layer.on({
-            mouseover: this.highlightFeature,
-            mouseout: this.resetHighlight,
-            click: this.clickFeature,
-          });
-        },
-      },
-      colorScale:MapData.getColorScale(),
-      countyData :MapData.getCountyData(),
-      value:MapData.getValue(),
-      statesData:MapData.getStatesData(),
 
-      id : "mapbox/streets-v11",
-      accessToken : "pk.eyJ1Ijoibm9lZGplZGplMTQiLCJhIjoiY2w1anJwNWZsMDJ5ZDNjcWkwZ3poaG5hMCJ9.0gEdr3JbUexUhqFYwh6Pnw",
-      zoom : 7,
-      gpsLatitude: 7.539989,
-      gpsLongitude: -5.547080,
-      attribution : '',
-      currentStrokeColor: "3d3213",
-      // 7.858500299901681
-      // -8.476885871692035
-      selectedFeature: {},
-      table: {},
-      unit:{}
 
 
     }
@@ -209,14 +134,8 @@ export default Vue.extend({
   components:{
     SideBar,
     ResultSearch,
-    LMap,
-    LGeoJson,
-    LTileLayer,
-    LControlZoom,
-    LControlLayers,
-    'l-info-control': InfoControl,
-    'l-reference-chart': ReferenceChart,
-    'l-choropleth-layer': ChoroplethLayer
+    MapComponent,
+
   },
   // props:{
   //   name,
@@ -239,59 +158,8 @@ export default Vue.extend({
       Mophy.init();
     },
 
-    highlightFeature(e) {
-      var layer = e.target;
 
-      layer.setStyle({
-        fillColor: "green",
-        weight: 5,
-        color: "#666",
-        dashArray: "",
-        fillOpacity: 0.7,
-      });
 
-      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
-      }
-    },
-    resetHighlight(e) {
-      var layer = e.target;
-
-      layer.setStyle({
-        fillColor: "#FC4E2A",
-        weight: 2,
-        opacity: 1,
-        color: "white",
-        dashArray: "3",
-        fillOpacity: 0.7,
-      });
-
-      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
-      }
-    },
-    clickFeature(ev) {
-      const feature = ev.target && ev.target.feature;
-      const featureProps = feature && feature.properties;
-      this.selectedFeature = featureProps;
-      this.table = {
-        Id: "Nueutre",
-        name: 'Hudson',
-        State: "CI",
-        NewCases: 21342,
-        Carte_Distibuees: 21342,
-      }
-      console.log("ok",this.selectedFeature)
-
-    },
-
-    getUrl() {
-      return `https://api.mapbox.com/styles/v1/${this.id}/tiles/{z}/{x}/{y}?access_token=${this.accessToken}`
-    },
-    getZoom(){
-      console.log("event")
-      // console.log("event",event)
-    },
 
     async logout() {
       // @ts-ignore
@@ -335,7 +203,18 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-
+.info {
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+.legend {
+  line-height: 18px;
+  color: #555;
+}
 .cart__box{
   .card{
     z-index: 0;

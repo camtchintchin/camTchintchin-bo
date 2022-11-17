@@ -62,12 +62,10 @@ export class MapData{
         {
               "type": "Feature",
               "properties": {
-                "GEO_ID": "0500000US36005",
-                "STATE": "35",
-                "COUNTY": "004",
-                "NAME": "Borough",
-                "LSAD": "County",
-                "CENSUSAREA": 519.014000
+                "code":"01",
+                "label":"DR test",
+                "name": "test",
+                "number":0
               },
               "geometry": {
                 "coordinates": [
@@ -611,15 +609,13 @@ export class MapData{
 
         },
         {
-              "type": "Feature",
-              "properties": {
-                "GEO_ID": "Abengourou",
-                "STATE": "35",
-                "COUNTY": "004",
-                "NAME": "Abengourou",
-
-                "CENSUSAREA": 519.014000
-              },
+          "type": "Feature",
+          "properties": {
+            "code":"01",
+            "label":"DR ABENGOUROU",
+            "name": "Abengourou",
+            "number":50000
+          },
           "geometry": {
             "coordinates":[ [
               [
@@ -976,15 +972,13 @@ export class MapData{
 
         },
         {
-              "type": "Feature",
-              "properties": {
-                "GEO_ID": "San-Pedro",
-                "STATE": "35",
-                "COUNTY": "004",
-                "NAME": "San-Pedro",
-
-                "CENSUSAREA": 519.014000
-              },
+          "type": "Feature",
+          "properties": {
+            "code":"11",
+            "label":"DR SAN PEDRO",
+            "name": "San-Pedro",
+            "number":50000
+          },
           "geometry": {
             "coordinates":[[
               [
@@ -1509,15 +1503,13 @@ export class MapData{
 
         },
         {
-              "type": "Feature",
-              "properties": {
-                "GEO_ID": "Soubre",
-                "STATE": "35",
-                "COUNTY": "004",
-                "NAME": "Soubre",
-
-                "CENSUSAREA": 519.014000
-              },
+          "type": "Feature",
+          "properties": {
+            "code":"12",
+            "label":"DR SOUBRE",
+            "name": "Soubre",
+            "number":50000
+          },
           "geometry": {
             "coordinates":[[
               [
@@ -1724,12 +1716,11 @@ export class MapData{
         {
           "type": "Feature",
           "properties": {
-            "GEO_ID": "Yamoussoukro",
-            "STATE": "35",
-            "COUNTY": "004",
-            "NAME": "Yamoussoukro",
+            "code":"13",
+            "label":"DR YAMOUSSOUKRO",
+            "name": "Yamoussoukro",
 
-            "CENSUSAREA": 519.014000
+            "number":5000
           },
           "geometry": {
             "coordinates":[[
@@ -2022,12 +2013,10 @@ export class MapData{
         {
           "type": "Feature",
           "properties": {
-            "GEO_ID": "Aboisso",
-            "STATE": "35",
-            "COUNTY": "004",
-            "NAME": "Aboisso",
-
-            "CENSUSAREA": 519.014000
+            "code":"03",
+            "label":"DR ABOISSO",
+            "name": "Aboisso",
+            "number":50000
           },
           "geometry": {
             "coordinates":[ [
@@ -2503,11 +2492,10 @@ export class MapData{
         {
           "type": "Feature",
           "properties": {
-            "GEO_ID": "Bongouanou",
-            "STATE": "35",
-            "COUNTY": "004",
-            "NAME": "Bongouanou",
-            "CENSUSAREA": 519.014000
+            "code":"05",
+            "label":"DR BONGOUANOU",
+            "name": "Bongouanou",
+            "number":10000
           },
           "geometry": {
             "coordinates":[ [
@@ -2848,8 +2836,16 @@ export class MapData{
       ]
     }
   }
+  static getColorStyle(d : any){
+    return d > 20000  ? '#BD0026' :
+        d > 10000  ? '#E31A1C' :
+          d > 5000  ? '#FC4E2A' :
+            d > 2500   ? '#FD8D3C' :
+              d > 1000   ? '#FEB24C' :
+                  '#fff';
+  }
   static getColorScale(){
-    return ["e7d090", "e9ae7b", "de7062"];
+    return ["fff", "FEB24C", "FD8D3C" , "FC4E2A" , "E31A1C" , "BD0026"];
   }
   static getValue(){
     return {
