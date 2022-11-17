@@ -1,5 +1,6 @@
 export class MapData{
   static getCountyData(){
+
     return [
       {
         Id: "Nueutre",
@@ -2506,7 +2507,6 @@ export class MapData{
             "STATE": "35",
             "COUNTY": "004",
             "NAME": "Bongouanou",
-
             "CENSUSAREA": 519.014000
           },
           "geometry": {

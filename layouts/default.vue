@@ -84,44 +84,50 @@
                 <div class="card">
                   <div class="card-body">
                     <div id="map-wrap" class="map">
-                      <l-map
-                        ref="mymap"
-                        :zoom="zoom"
-                        :center="[gpsLatitude,gpsLongitude]"
-                        :options="{ zoomControl: false, maxZoom: 18 }"
-                        style="height:80vh"
-                      >
-                        <l-tile-layer :url="getUrl()" :attribution="attribution"></l-tile-layer>-->
-                        <l-control-scale
-                          position="bottomright"
-                          :imperial="true"
-                          :metric="true"
-                        ></l-control-scale>
-                        <l-control-zoom position="bottomright"></l-control-zoom>
+<!--                      <l-map-->
+<!--                        ref="mymap"-->
+<!--                        :zoom="zoom"-->
+<!--                        :center="[gpsLatitude,gpsLongitude]"-->
+<!--                        :options="{ zoomControl: false, maxZoom: 18 }"-->
+<!--                        style="height:80vh"-->
+<!--                      >-->
+<!--                        <l-tile-layer :url="getUrl()" :attribution="attribution"></l-tile-layer>&ndash;&gt;-->
+<!--                        <l-control-scale-->
+<!--                          position="bottomright"-->
+<!--                          :imperial="true"-->
+<!--                          :metric="true"-->
+<!--                        ></l-control-scale>-->
+<!--                        <l-control-zoom position="bottomright"></l-control-zoom>-->
+<!--                        <l-info-control :item="table.item" :unit="table.unit" title="Délégation Régionale" placeholder="Survoler la DR"/>-->
 
-                        <l-geo-json
-                          :geojson="statesData"
-                          :options="mapOptions"
-                          ref="geolayer">
-                          <template slot-scope="props">
-                            <l-info-control :item="props.currentItem" :unit="props.unit" title="Délégation Régionale" placeholder="Survoler la DR"/>
-                            <l-reference-chart title="Cartes Distribuées" :colorScale="colorScale" :min="props.min" :max="props.max" position="topright"/>
-                          </template>
-                        </l-geo-json>
-                      </l-map>
-<!--                      <template>-->
-<!--                        <l-map style="height:80vh" :zoom="zoom" :center="[gpsLatitude,gpsLongitude]" v-on:click="getZoom">-->
-<!--                          <l-tile-layer :url="getUrl()" :attribution="attribution"></l-tile-layer>-->
-<!--&lt;!&ndash;                          <l-marker :lat-lng="[gpsLatitude,gpsLongitude]"></l-marker>&ndash;&gt;-->
-<!--&lt;!&ndash;                          <l-choropleth-layer  :data="countyData" titleKey="name" idKey="Id" :value="value"  geojsonIdKey="GEO_ID" :geojson="statesData" :colorScale="colorScale">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <template slot-scope="props">&ndash;&gt;-->
-<!--&lt;!&ndash;                              <l-info-control :item="props.currentItem" :unit="props.unit" title="Délégation Régionale" placeholder="Survoler la DR"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                              <l-reference-chart title="Cartes Distribuées" :colorScale="colorScale" :min="props.min" :max="props.max" position="topright"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                            </template>&ndash;&gt;-->
-<!--&lt;!&ndash;                          </l-choropleth-layer>&ndash;&gt;-->
-<!--                        </l-map>-->
+<!--                        <l-geo-json-->
+<!--                          :geojson="statesData"-->
+<!--                          :options="mapOptions"-->
+<!--                          :colorScale="colorScale"-->
+<!--                          :data="countyData"-->
+<!--                          titleKey="name"-->
+<!--                          idKey="Id"-->
+<!--                          :value="value"-->
+<!--                          ref="geolayer">-->
+<!--&lt;!&ndash;                          <template slot-scope="props">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <l-info-control :item="props.currentItem" :unit="props.unit" title="Délégation Régionale" placeholder="Survoler la DR"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <l-reference-chart title="Cartes Distribuées" :colorScale="colorScale" :min="props.min" :max="props.max" position="topright"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                          </template>&ndash;&gt;-->
+<!--                        </l-geo-json>-->
+<!--                      </l-map>-->
+                      <template>
+                        <l-map style="height:80vh" :zoom="zoom" :center="[gpsLatitude,gpsLongitude]"  :option="mapOptions" v-on:click="getZoom">
+                          <l-tile-layer :url="getUrl()" :attribution="attribution"></l-tile-layer>
+<!--                          <l-marker :lat-lng="[gpsLatitude,gpsLongitude]"></l-marker>&ndash;&gt;-->
+                          <l-choropleth-layer  :data="countyData" titleKey="name" idKey="Id" :value="value"  geojsonIdKey="GEO_ID" :geojson="statesData" :colorScale="colorScale" @mouseover="getZoom">
+                            <template slot-scope="props" >
+                              <l-info-control :item="props.currentItem" :unit="props.unit" title="Délégation Régionale" placeholder="Survoler la DR" @mouseover="getZoom"/>
+                              <l-reference-chart title="Cartes Distribuées" :colorScale="colorScale" :min="props.min" :max="props.max" position="topright"/>
+                            </template>
+                          </l-choropleth-layer>
+                        </l-map>
 
-<!--                      </template>-->
+                      </template>
                     </div>
 
 <!--                    <img src="~/assets/images/carteCi.png" width="50px" >-->
@@ -171,16 +177,6 @@ export default Vue.extend({
     return{
       // geojson,
       mapOptions: {
-        style: function style(feature) {
-          return {
-            fillColor: "#FC4E2A",
-            weight: 2,
-            opacity: 1,
-            color: "white",
-            dashArray: "3",
-            fillOpacity: 0.7,
-          };
-        },
         onEachFeature: (feature, layer) => {
           layer.on({
             mouseover: this.highlightFeature,
@@ -204,6 +200,8 @@ export default Vue.extend({
       // 7.858500299901681
       // -8.476885871692035
       selectedFeature: {},
+      table: {},
+      unit:{}
 
 
     }
@@ -276,6 +274,13 @@ export default Vue.extend({
       const feature = ev.target && ev.target.feature;
       const featureProps = feature && feature.properties;
       this.selectedFeature = featureProps;
+      this.table = {
+        Id: "Nueutre",
+        name: 'Hudson',
+        State: "CI",
+        NewCases: 21342,
+        Carte_Distibuees: 21342,
+      }
       console.log("ok",this.selectedFeature)
 
     },
@@ -283,8 +288,9 @@ export default Vue.extend({
     getUrl() {
       return `https://api.mapbox.com/styles/v1/${this.id}/tiles/{z}/{x}/{y}?access_token=${this.accessToken}`
     },
-    getZoom(event: { latlng: any; }){
-      console.log("event",event)
+    getZoom(){
+      console.log("event")
+      // console.log("event",event)
     },
 
     async logout() {
