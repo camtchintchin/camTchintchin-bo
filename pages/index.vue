@@ -1,436 +1,133 @@
 <template>
-  <div>
+  <div id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading ">
+    <!--begin::Main-->
+    <div class="d-flex flex-column flex-root">
+      <!--begin::Login-->
+      <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white vh-100" id="kt_login">
+        <!--begin::Aside-->
+        <div  style="min-width: 40%" class="d-none d-lg-flex">
+          <img
+            src="/assets/media/img/bg-login-1.png"
+            alt="Logo"
+            style="max-width: 500px;min-width: 100%"
+            class="img-fluid mx-auto d-block img-responsive"
+          />
 
-    <b-row>
-      <b-col lg="12">
-        <b-row class="mb-4">
-          <b-col lg="6" class="pl-0">
-            <div class="h-100 card-shadow" >
-              <b-card-body
-                class="'shadow border-none card--home "
-                style="border-radius: 1.1em">
-                <b-row >
-                  <b-col md="8">
-                    <p class="color-blue" style="font-weight: 600;">Nombre total de producteurs recencés</p>
-                    <h1 class="color-green font-weight-bold">980 894</h1>
-                    <!--                    <div class="details-link">-->
-                    <!--                      <nuxt-link to="#" class="details-link">Voir détails</nuxt-link>-->
-                    <!--                    </div>-->
-                  </b-col>
-                  <b-col md="4" class="mt-5">
-                    <img
-                      width="50px"
-                      height="auto"
-                      src="~/assets/images/icon/planteur.svg"
-                      alt="icon"
-
-                    />
-                  </b-col>
-                </b-row>
-
-
-              </b-card-body>
-            </div>
-          </b-col>
-          <b-col lg="6" class="pl-0 ">
-            <div class="h-100 card-shadow">
-              <b-card-body
-                class="'shadow border-none card--home"
-                style="border-radius: 1.1em">
-                <b-row>
-                  <b-col md="8">
-                    <p class="color-blue" style="font-weight: 600;">Nombre total de cartes distribuées</p>
-                    <h1 class="color-green font-weight-bold pt-3">489 891</h1>
-                    <!--                    <div class="details-link pt-1">-->
-                    <!--                      <nuxt-link to="#" class="details-link">Voir détails</nuxt-link>-->
-                    <!--                    </div>-->
-                  </b-col>
-                  <b-col md="4" class="mt-5">
-                    <img
-                      width="80px"
-                      height="auto"
-                      src="~/assets/images/icon/carte.png"
-                      alt="icon"
-
-                    />
-                  </b-col>
-                </b-row>
-
-
-              </b-card-body>
-            </div>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col lg="6" class="pl-0 ">
-            <div class="h-100 card-shadow">
-              <b-card-body
-                class="'shadow border-none card--home"
-                style="border-radius: 1.1em">
-                <b-row>
-                  <b-col md="8">
-                    <p class="color-blue" style="font-weight: 600;">Nombre total de cartes résiduelles</p>
-                    <h1 class="color-green font-weight-bold ">489 891</h1>
-                    <div class="details-link pt-4">
-                    </div>
-                  </b-col>
-                  <b-col md="4" class="mt-5">
-                    <img
-                      width="80px"
-                      height="auto"
-                      src="~/assets/images/icon/carte.png"
-                      alt="icon"
-
-                    />
-                  </b-col>
-                </b-row>
-
-
-              </b-card-body>
-            </div>
-          </b-col>
-          <b-col lg="6" class="pl-0 ">
-            <div class="h-100 card-shadow">
-              <b-card-body
-                class="'shadow border-none card--home"
-                style="border-radius: 1.1em">
-                <b-row>
-                  <b-col md="8">
-                    <p class="color-blue" style="font-weight: 600;">Nombre total d’agents</p>
-                    <h1 class="color-green font-weight-bold ">901</h1>
-                    <!--                    <div class="details-link">-->
-                    <!--                      <nuxt-link to="#" class="details-link">Voir détails</nuxt-link>-->
-                    <!--                    </div>-->
-                  </b-col>
-                  <b-col md="4" class="mt-5">
-                    <img
-                      width="60px"
-                      height="auto"
-                      src="~/assets/images/icon/user.svg"
-                      alt="icon"
-                    />
-                  </b-col>
-                </b-row>
-
-
-              </b-card-body>
-            </div>
-          </b-col>
-        </b-row>
-      </b-col>
-    </b-row>
-    <b-row class="mt-3">
-      <b-col class="">
-        <h5 class="color-blue font-weight-bold">Répartition nationale de la distribution des cartes</h5>
-      </b-col>
-    </b-row>
-    <b-row>
-
-      <b-col lg="12 mb-5">
-        <div class="h-100 card-shadow">
-          <b-card-body
-            class="'shadow border-none bg-white card-blue "
-            style="border-radius: 1.1em">
-            <div id="chartBar">
-              <apexchart type="bar" height="350"></apexchart>
-            </div>
-          </b-card-body>
         </div>
-      </b-col>
+        <!--begin::Aside-->
+        <!--begin::Content-->
+        <div class="login-content flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
+          <!--begin::Content body-->
+          <div class="d-flex flex-column-fluid flex-center">
+            <!--begin::Signin-->
+            <div class="login-form login-signin">
+              <!--begin::Form-->
+              <form class="form" novalidate="novalidate" id="kt_login_signin_form">
+                <!--begin::Title-->
+                <div class="pb-13 pt-lg-0 pt-5 text-center">
+                  <h3 class="font-weight-bolder  text-dark font-size-h4 font-size-h1-lg">BIENVENUE</h3>
+                  <span class="text-muted font-weight-bold font-size-h4">AKWABA</span>
+                  <!--									<a href="javascript:;" id="kt_login_signup" class="text-primary font-weight-bolder">Create an Account</a></span>-->
+                </div>
+                <!--begin::Title-->
+                <!--begin::Form group-->
+                <div class="form-group">
+                  <label class="font-size-h6 font-weight-bolder text-dark">Email</label>
+                  <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg" type="text" name="username" autocomplete="off" />
+                </div>
+                <!--end::Form group-->
+                <!--begin::Form group-->
+                <div class="form-group">
+                  <div class="d-flex justify-content-between mt-n5">
+                    <label class="font-size-h6 font-weight-bolder text-dark pt-5">Mot de passe</label>
+                  </div>
+                  <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg" type="password" name="password" autocomplete="off" />
+                  <a href="javascript:;" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5" id="kt_login_forgot">Mot de passe oublié ?</a>
 
-    </b-row>
+                </div>
+                <!--end::Form group-->
+                <!--begin::Action-->
+                <div class="pb-lg-0 pb-5 text-center">
+                  <b-spinner small label="Large Spinner" type="grow" v-if="loading"></b-spinner>
 
-    <b-row>
+                  <button v-else @click="login" type="button" id="kt_login_signin_submit" class=" btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">
+                    Connexion
+                  </button>
 
-      <b-col lg="12">
-        <b-row class="mb-4">
-          <b-col lg="6" class="pl-0">
-            <div class="h-100" >
-              <b-card-body
-                class="'shadow border-none  card-blue "
-                style="border-radius: 1.1em">
-                <b-row >
-                  <b-col md="8">
-                    <p class="color-blue" style="font-weight: 600;">Nombre total de KYC effectué</p>
-                    <h1 class="color-green font-weight-bold ">980 894</h1>
-                  </b-col>
-                  <b-col md="4" class="mt-5">
-                    <img
-                      width="50px"
-                      height="auto"
-                      src="~/assets/images/icon/loupe-success.svg"
-                      alt="icon"
-
-                    />
-                  </b-col>
-                </b-row>
-
-
-              </b-card-body>
+                </div>
+                <!--end::Action-->
+              </form>
+              <!--end::Form-->
             </div>
-          </b-col>
-          <b-col lg="6" class="pl-0">
-            <div class="h-100" >
-              <b-card-body
-                class="'shadow border-none  card-blue "
-                style="border-radius: 1.1em">
-                <b-row >
-                  <b-col md="8">
-                    <p class="color-blue" style="font-weight: 600;">Nombre total de KYC non conforme</p>
-                    <h1 class="color-green font-weight-bold ">980 894</h1>
-                  </b-col>
-                  <b-col md="4" class="mt-5">
-                    <img
-                      width="50px"
-                      height="auto"
-                      src="~/assets/images/icon/loupe-error.svg"
-                      alt="icon"
-                    />
-                  </b-col>
-                </b-row>
+            <!--end::Signin-->
 
-
-              </b-card-body>
-            </div>
-          </b-col>
-
-        </b-row>
-      </b-col>
-      <b-col lg="12">
-
-        <b-row class="mb-4">
-          <b-col lg="12 cardDonut" class="pl-0">
-            <div class="h-50" >
-              <b-card-body
-                class="'shadow border-none  card-blue "
-                style="border-radius: 1.1em">
-                <b-row >
-                  <b-col md="12" class="">
-                    <h5 class="text-center">Taux actif des agents</h5>
-                    <div id="radialChartBar" class="text-center">
-                      <apexchart type="radialBar" height="350" width="100%"></apexchart>
-                    </div>
-                  </b-col>
-<!--                  <b-col md="6">-->
-<!--                    <div id="lineChart">-->
-<!--                      <apexchart type="line" height="230"></apexchart>-->
-<!--                    </div>-->
-<!--                  </b-col>-->
-                </b-row>
-
-
-              </b-card-body>
-            </div>
-          </b-col>
-
-        </b-row>
-      </b-col>
-    </b-row>
+          </div>
+          <!--end::Content body-->
+          <!--begin::Content footer-->
+          <!--          <div class="d-flex justify-content-lg-start justify-content-center align-items-end py-7 py-lg-0 link__bottom">-->
+          <!--&lt;!&ndash;            <a href="#" class="text-primary font-weight-bolder font-size-h5">Terms</a>&ndash;&gt;-->
+          <!--            <a href="#" class="text-primary ml-10 font-weight-bolder font-size-h5 link__bottom">A propos de nous</a>-->
+          <!--            <a href="#" class="text-primary ml-5  font-weight-bolder font-size-h5">Besoin d'aide ?</a>-->
+          <!--          </div>-->
+          <!--end::Content footer-->
+        </div>
+        <!--end::Content-->
+      </div>
+      <!--end::Login-->
+    </div>
+    <!--end::Main-->
   </div>
+
 </template>
 
-<script>
+<script lang="ts">
 import Vue from "vue";
-import { Bar,Line } from 'vue-chartjs'
-// import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
-import {BModal} from 'bootstrap-vue'
-import "~/assets/canvaJs/canvasjs.min.js"
-// ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
-import ApexCharts from 'apexcharts'
 
+// import metronic from "~/helpers/metronic";
+// import "~/helpers/metronic";
 export default Vue.extend( {
-  name: 'IndexPage',
-  layout: "default",
-// components:{
-//   apexchart: VueApexCharts,
-//
-// },
-  data() {
-    return {
-      show: false,
-      variants: ['primary', 'secondary', 'success', 'warning', 'danger', 'info', 'light', 'dark'],
-      headerBgVariant: 'light',
-      headerTextVariant: 'light',
-      bodyBgVariant: 'light',
-      bodyTextVariant: 'dark',
-
+  name: "LoginPage",
+  layout:"login",
+  data(){
+    return{
+      loading:false
     }
-  },
-  computed: {
 
   },
+  methods:{
+    login(){
+      console.log("login")
+      this.loading=true
 
-  mounted(){
-    const data= {
-
-      series: [{
-        data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-      }],
-      chart: {
-        id: 'chart2',
-        type: 'line',
-        height: 230,
-        toolbar: {
-          autoSelected: 'pan',
-          show: false
-        }
-      },
-      colors: ['#546E7A'],
-      stroke: {
-        width: 3
-      },
-      dataLabels: {
-        enabled: false
-      },
-      fill: {
-        opacity: 1,
-      },
-      markers: {
-        size: 0
-      },
-      xaxis: {
-        type: 'datetime'
-      }
-
-    }
-    const chart = new ApexCharts(document.querySelector("#lineChart"), data);
-
-    chart.render();
-
-
-
-    this.charBar()
-    this.radialChartBar()
-
-    // Size of browser viewport.
-    $(window).height();
-    $(window).width();
-
-// Size of HTML document (same as pageHeight/pageWidth in screenshot).
-    $(document).height();
-    $(document).width();
-    console.log( "screen==>",window.screen.width,"x", window.screen.height)
-  },
-  methods: {
-    charBar(){
-      const data={
-
-        series: [
-          {
-            name: 'Nombre de carte livré',
-            data: [44, 55, 41, 67, 22, 43, 41, 67, 22, 70],
-            color:'#768801'
-          },
-          {
-            name: 'Nombre de carte distribuée',
-            data: [13, 23, 20, 8, 13, 27, 20, 8, 13, 27],
-            color:'#D5965C'
-          },
-        ],
-        chart: {
-          type: 'bar',
-          height: 350,
-          stacked: true,
-          toolbar: {
-            show: true
-          },
-          zoom: {
-            enabled: true
-          }
-
-        },
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            legend: {
-              position: 'bottom',
-              offsetX: -10,
-              offsetY: 0
-            }
-          }
-        }],
-        plotOptions: {
-          bar: {
-            horizontal: false,
-
-            dataLabels: {
-              total: {
-                enabled: false,
-                style: {
-                  fontSize: '13px',
-                  fontWeight: 900
-                }
-              }
-            }
-          },
-        },
-        xaxis: {
-          categories: ['','','','','','','','','',''],
-        },
-        legend: {
-          position: 'top',
-        },
-        fill: {
-          colors: ['#768801','#D5965C'],
-          opacity: 1
-        },
-
-
-      }
-      const chart = new ApexCharts(document.querySelector("#chartBar"), data);
-
-      chart.render();
-    },
-    radialChartBar(){
-      const data= {
-
-        series: [80],
-        chart: {
-          height: 250,
-          type: 'radialBar',
-          fontSize: '140px',
-          fontFamily: 'Helvetica, Arial, sans-serif',
-        },
-
-        plotOptions: {
-
-          radialBar: {
-            dataLabels: {
-              enabled: true,
-
-            },
-            hollow: {
-              size: '50%',
-            }
-          },
-        },
-        labels: [''],
-        fill: {
-          colors: ['#768801','#D5965C'],
-          opacity: 1
-        },
-        legend: {
-          position: 'top',
-        },
-      }
-      const chart = new ApexCharts(document.querySelector("#radialChartBar"), data);
-
-      chart.render();
+      setTimeout(function() {
+        this.loading=false
+      }, 7000);
+      window.location = "/dashboard"
+      // this.$store.commit("SET_LOGGIN",true)
     }
   }
-
 })
 </script>
-
-
-
-<style  lang="scss">
-#chartContainer{
-  background: none;
+<style lang="scss" scoped>
+#kt_login_signin_submit{
+  background: #997334;
+  border: none;
+  &:hover{
+    background: #04315d;
+    transition: 0.1ms;
+  }
 }
 
+.link__bottom{
+  font-size:5px;
+}
+.login-form{
+  padding: 50px;
+  border-radius: 10px;
+  //background: #1CB7D695;
+  box-shadow: 1px 2px 23px 20px rgba(86,91,194,0.04);
+  -webkit-box-shadow: 1px 2px 23px 20px rgba(86,91,194,0.04);
+  -moz-box-shadow: 1px 2px 23px 20px rgba(86,91,194,0.04);
+}
 
-//#myChart{
-//  height: 50px;
-//}
 </style>

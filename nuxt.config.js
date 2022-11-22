@@ -7,18 +7,16 @@ export default {
     host: '0.0.0.0',
     port: 3000
   },
-  serverMiddleware: [
-    '~/api',
-  ],
+
   head: {
-    title: 'Reporting',
+    title: 'Dashboard tchin-tchin',
     htmlAttrs: {
       lang: 'fr'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: `Push Business ${process.env.ENV}` },
+      { hid: 'description', name: 'description', content: `Dashboard` },
       { name: 'format-detection', content: 'telephone=no' },
       {
         name: 'insight-app-sec-validation',
@@ -29,98 +27,93 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
-        href: '/base/vendor/jqvmap/css/jqvmap.min.css'
+        href: 'https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700'
       },
       {
         rel: 'stylesheet',
-        href: '/base/vendor/select2/css/select2.min.css'
+        href: '/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css?v=7.0.4'
       },
       {
         rel: 'stylesheet',
-        href: '/base/vendor/owl-carousel/owl.carousel.css'
+        href: '/assets/css/custom.css'
       },
       {
         rel: 'stylesheet',
-        href: '/base/css/style.css'
+        href: '/assets/css/pages/login/login-1.css?v=7.0.4'
       },
       {
         rel: 'stylesheet',
-        href: '/base/scss/main.scss'
+        href: '/assets/plugins/global/plugins.bundle.css?v=7.0.4'
+      },
+
+      {
+        rel: 'stylesheet',
+        href: '/assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.4'
       },
       {
         rel: 'stylesheet',
-        href: '/base/scss/custom.scss'
+        href: '/assets/css/style.bundle.css?v=7.0.4'
       },
       {
         rel: 'stylesheet',
-        href: '/base/vendor/animate/animate.min.css'
+        href: '/assets/css/themes/layout/header/base/light.css?v=7.0.4'
       },
       {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap",
+        rel: 'stylesheet',
+        href: '/assets/css/themes/layout/header/menu/light.css?v=7.0.4'
       },
       {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap",
+        rel: 'stylesheet',
+        href: '/assets/css/themes/layout/brand/dark.css?v=7.0.4'
       },
       {
-        rel: "stylesheet",
-        href: "https://cdn.jsdelivr.net/npm/apexcharts",
+        rel: 'stylesheet',
+        href: '/assets/css/themes/layout/aside/dark.css?v=7.0.4'
       },
+      {
+        rel: 'stylesheet',
+        href: '/assets/owlcarousel/owl.carousel.min.css'
+      },
+      {
+        rel: 'stylesheet',
+        href: '/assets/owlcarousel/owl.theme.default.min.css'
+      },
+
     ],
     script: [
       {
-        src: '/base/vendor/global/global.min.js',
+        src: '/assets/plugins/global/plugins.bundle.js?v=7.0.4',
         body: true
       },
       {
-        src: '/base/js/custom.js',
+        src: '/assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.4',
         body: true
       },
       {
-        src: '/base/js/deznav-init.js',
+        src: '/assets/js/scripts.bundle.js?v=7.0.4',
         body: true
       },
       {
-        src: '/base/vendor/peity/jquery.peity.min.js',
+        src: '/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js?v=7.0.4',
         body: true
       },
       {
-        src: '/base/js/plugins-init/piety-init.js',
+        src: '/assets/js/pages/widgets.js?v=7.0.',
         body: true
       },
       {
-        src: '/base/vendor/select2/js/select2.full.min.js',
+        src: '/assets/js/metronic.js',
         body: true
       },
       {
-        src: '/base/js/plugins-init/select2-init.js',
+        src: '/assets/js/initialize.js',
         body: true
       },
       {
-        src: '/base/js/plugins-init/chartjs-init.js',
+        src: '/assets/owlcarousel/owl.carousel.min.js',
         body: true
       },
-      {
-        src: '/base/vendor/chartist/js/chartist.min.js',
-        body: true
-      },
-      {
-        src: '/base/vendor/chart.js/Chart.bundle.min.js',
-        body: true
-      },
-      {
-        src: '/base/vendor/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js',
-        body: true
-      },
-      {
-        src: 'https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js',
-        body: true
-      },
-      {
-        src: 'https://canvasjs.com/assets/script/canvasjs.min.js',
-        body: true
-      },
+
       // {
       //   src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js',
       //   body: true
@@ -144,22 +137,12 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/assets/sass/modal',
-    '~/assets/sass/buttons',
-    '~/assets/sass/global',
-    '~/assets/sass/devwikak',
-    '~/assets/sass/variant'
+
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    {src: '~/plugins/chart.js', mode: 'client'},
-    { src: '~/plugins/axios' },
-    { src: '~/plugins/moment.js', ssr: false },
-    { src: '~/plugins/vee-val.ts', ssr: false },
-    { src: '~/plugins/persistedState.client.js' },
-    { src: '~plugins/leaflet.js', ssr: false },
-    { src: '~plugins/numericValue.ts', ssr: false },
+
 
     // { src: '~/plugins/lodash.js'},
 
@@ -171,7 +154,6 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     '@nuxt/typescript-build',
-    'nuxt-typed-vuex',
 
 
   ],
@@ -180,22 +162,13 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
-    'nuxt-typed-vuex',
 
-    { src: '@nuxtjs/axios', mode: 'client' },
   ],
   bootstrapVue: {
     bootstrapCSS: false,
     bootstrapVueCSS: true,
   },
 
-  axios: {
-    // proxy: true
-    // baseURL: `${process.env.api_url}`,
-    proxyHeaders: false,
-    credentials: false,
-    // proxy: true
-  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     babel: { compact: true },

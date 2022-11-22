@@ -8,6 +8,7 @@
     "allowJs": true,
     "sourceMap": true,
     "strict": true,
+
     "noEmit": false,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
@@ -17,7 +18,6 @@
       "@/*": ["./*"]
     },
     "types": [
-
       "@nuxt/types",
       "@nuxt/vue-app",
       "@types/node",

@@ -1,14 +1,13 @@
 <template>
-  <div id="login">
-    <Nuxt />
+  <div>
+    <Nuxt/>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-export default Vue.extend( {
-  name: "loginLayout",
-})
+export default {
+  name: "login"
+}
 </script>
 
 <style scoped>
