@@ -62,13 +62,13 @@
                           class=" input-cus form-control form-control-solid h-auto py-7 px-6 rounded-lg"
                           required
                         ></b-form-input>
-                        <i
-                          :class="eye"
-                          class="fa password-reveal position-absolute"
-                          aria-hidden="true"
-                          role="button"
-                          @click="obfuscateToggle"
-                        ></i>
+<!--                        <i-->
+<!--                          :class="eye"-->
+<!--                          class="fa password-reveal position-absolute"-->
+<!--                          aria-hidden="true"-->
+<!--                          role="button"-->
+<!--                          @click="obfuscateToggle"-->
+<!--                        ></i>-->
                         <h6 class="text-danger">{{ errors[0] }}</h6>
                       </b-form-group>
                     </va-provider>
@@ -224,15 +224,17 @@ export default Vue.extend( {
         console.log("form",formSign)
 
            await this.$accessor.generateTokenHandler(formSign).then(  (response) => {
-          console.log("response ss",response.response.data)
+          console.log("response ss",response)
            if (response.response.data.code == '99'){
+             console.log("response in logn")
+
              this.messageError = "Mot de passe ou identifiant incorrect"
              this.showDismissibleAlert = true
              this.makeToast(this.messageError)
            }else{
              console.log("response for call log")
              this.$axios
-               .$get('/v1/users')
+               .$get('/v1/users/token/get')
                .then((response) => {
                  console.log(response)
 
@@ -286,3 +288,4 @@ export default Vue.extend( {
     transition: 0.1ms;
   }
 }
+</style>

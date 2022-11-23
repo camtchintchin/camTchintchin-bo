@@ -38,7 +38,7 @@ export default function ({ $axios }: { $axios: any }, inject: Inject) {
       console.log("dto==>",config.data)
       console.log("on request interceptor")
       //console.log(config.url)
-      if(!["/user/publicKey", "/signin"].includes(config.url)){
+      if(!["/v1/club", "/signin"].includes(config.url)){
 
         const token = localStorage.getItem('access_token')
         console.log("token",token)

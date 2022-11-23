@@ -1,4 +1,4 @@
-import { getAccessorType, mutationTree, actionTree } from 'typed-vuex'
+import { getterTree,getAccessorType, mutationTree, actionTree } from 'typed-vuex'
 
 import moment from "moment";
 import * as users from './authenticate/users'
@@ -9,21 +9,24 @@ export const state= ()=>{
     user: {} as any,
     auth: {} as any,
     loggedIn: false,
+    listCLub:{}
   }
 }
 
 type RootState = ReturnType<typeof state>
 
-export const getters = {
+export const getters = getterTree(state, {
+  getListCLub: (state) => state.listCLub,
+
 // @ts-ignore
   isAuthenticated(state) {
     return state.loggedIn
   },
   // @ts-ignore
   loggedInUser:(state)=> {
-    return state.user[0]
+    return state.user
   },
-}
+})
 
 export const mutations = mutationTree(state, {
   SET_TOKEN(state, newValue: {access_token: string}) {
@@ -43,6 +46,10 @@ export const mutations = mutationTree(state, {
     // state.loggedIn = false;
     // state.user = null;
   },
+  SET_LIST_CLUB(state,value) {
+    state.listCLub = value;
+    // state.user = null;
+  },
   LOGOUT(state) {
     state.loggedIn = false;
     state.user = null;
@@ -59,10 +66,16 @@ export const actions = actionTree(
         this.$axios
           .$post('/signin', data)
           .then((response) => {
-            console.log("response",response)
-            localStorage.setItem('access_token', response.data.data.access_token)
+            console.log("response data",response.data)
+            if (response.data.code == '99'){
+              console.log("response in")
 
-            resolve({ response })
+              resolve({ response })
+            }else {
+              localStorage.setItem('access_token', response.data.data.access_token)
+              resolve({ response })
+            }
+
             ////console.log('generateTokenHandler : ')
             // return {response}
           })
@@ -91,6 +104,22 @@ export const actions = actionTree(
           //console.log(error)
         })
 
+    },
+    async getListCLubHandler({commit}){
+      await this.$axios.$get("/v1/club",).then((response) => {
+        console.log("type",response)
+
+        console.log(response.data)
+        if (response.status){
+          // this.items = response.data
+          console.log("response succs",response)
+          commit("SET_LIST_CLUB",response)
+          // return response.data
+        }
+      })
+        .catch((error) => {
+          //console.log(error)
+        })
     },
     logout({ commit }) {
       // console.log('/users/logout')

@@ -38,10 +38,10 @@
                         <span class="text-dark-75">Localité</span>
                       </th>
                       <th style="min-width: 100px">
-                        <span class="text-dark-75">Président</span>
+                        <span class="text-dark-75">Création</span>
                       </th>
                       <th style="min-width: 100px">
-                        <span class="text-dark-75">Nbr. joueurs</span>
+                        <span class="text-dark-75">email</span>
                       </th>
                       <th style="min-width: 130px">
                         <span class="text-dark-75">Contact</span>
@@ -49,34 +49,34 @@
                       <th style="min-width: 120px">Actions</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody v-for="(item, key) in items">
                       <tr>
-                      <td class="pl-0 py-8">
-                        <div class="d-flex align-items-center">
-                          <div class="symbol symbol-50  ml-4">
-                            <img src="~assets/media/equip/africa.png"  >
+                        <td class="pl-0 py-8">
+                          <div class="d-flex align-items-center">
+                            <div class="symbol symbol-50  ml-4">
+                              <img src="~assets/media/equip/africa.png"  >
 
-                            <!--                            <div class="symbol-label" style="background-image: url('assets/media/equip/asec.png');background-size: 100% auto" ></div>-->
+                              <!--                            <div class="symbol-label" style="background-image: url('assets/media/equip/asec.png');background-size: 100% auto" ></div>-->
+                            </div>
                           </div>
-                        </div>
-                      </td>
-                      <td>
-                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">Africa sport</span>
-                      </td>
-                      <td>
-                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">ABIDJAN</span>
-                      </td>
-                      <td>
-                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">M. John Doe</span>
-                      </td>
-                      <td>
-                        <span class="text-dark-75 text-center font-weight-bolder d-block font-size-lg">15</span>
-                      </td>
-                      <td>
-                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">+225 00 00 00 00 00</span>
-                      </td>
-                      <td class="text-left pr-0">
-                        <a href="/gestion-club/information/" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+                        </td>
+                        <td>
+                          <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{item.name}}</span>
+                        </td>
+                        <td>
+                          <span class="text-dark-75 font-weight-bolder d-block font-size-lg">ABIDJAN</span>
+                        </td>
+                        <td>
+                          <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{item.creation_year}}</span>
+                        </td>
+                        <td>
+                          <span class="text-dark-75  font-weight-bolder d-block font-size-lg">{{item.email}}</span>
+                        </td>
+                        <td>
+                          <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{item.contact}}</span>
+                        </td>
+                        <td class="text-left pr-0">
+                          <a href="/gestion-club/information/" class="btn btn-icon btn-light btn-hover-primary btn-sm">
 																<span class="svg-icon svg-icon-md svg-icon-primary">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
 																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -88,91 +88,9 @@
 																	</svg>
                                   <!--end::Svg Icon-->
 																</span>
-                        </a>
-                      </td>
-                    </tr>
-                      <tr>
-                      <td class="pl-0 py-8">
-                        <div class="d-flex align-items-center">
-                          <div class="symbol symbol-50  ml-4">
-                            <img src="~assets/media/equip/africa.png"  >
-
-                            <!--                            <div class="symbol-label" style="background-image: url('assets/media/equip/asec.png');background-size: 100% auto" ></div>-->
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">Africa sport</span>
-                      </td>
-                      <td>
-                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">ABIDJAN</span>
-                      </td>
-                      <td>
-                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">M. John Doe</span>
-                      </td>
-                      <td>
-                        <span class="text-dark-75 text-center font-weight-bolder d-block font-size-lg">15</span>
-                      </td>
-                      <td>
-                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">+225 00 00 00 00 00</span>
-                      </td>
-                      <td class="text-left pr-0">
-                        <a href="/gestion-club/information/" class="btn btn-icon btn-light btn-hover-primary btn-sm">
-																<span class="svg-icon svg-icon-md svg-icon-primary">
-																	<!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
-																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-																		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																			<polygon points="0 0 24 0 24 24 0 24" />
-																			<rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)" x="11" y="5" width="2" height="14" rx="1" />
-																			<path d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997)" />
-																		</g>
-																	</svg>
-                                  <!--end::Svg Icon-->
-																</span>
-                        </a>
-                      </td>
-                    </tr>
-                      <tr>
-                      <td class="pl-0 py-8">
-                        <div class="d-flex align-items-center">
-                          <div class="symbol symbol-50  ml-4">
-                            <img src="~assets/media/equip/africa.png"  >
-
-                            <!--                            <div class="symbol-label" style="background-image: url('assets/media/equip/asec.png');background-size: 100% auto" ></div>-->
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">Africa sport</span>
-                      </td>
-                      <td>
-                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">ABIDJAN</span>
-                      </td>
-                      <td>
-                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">M. John Doe</span>
-                      </td>
-                      <td>
-                        <span class="text-dark-75 text-center font-weight-bolder d-block font-size-lg">15</span>
-                      </td>
-                      <td>
-                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">+225 00 00 00 00 00</span>
-                      </td>
-                      <td class="text-left pr-0">
-                        <a href="#" class="btn btn-icon btn-light btn-hover-primary btn-sm">
-																<span class="svg-icon svg-icon-md svg-icon-primary">
-																	<!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
-																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-																		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																			<polygon points="0 0 24 0 24 24 0 24" />
-																			<rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)" x="11" y="5" width="2" height="14" rx="1" />
-																			<path d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997)" />
-																		</g>
-																	</svg>
-                                  <!--end::Svg Icon-->
-																</span>
-                        </a>
-                      </td>
-                    </tr>
+                          </a>
+                        </td>
+                      </tr>
 
                     </tbody>
                   </table>
@@ -191,10 +109,46 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 export default {
   name: "index",
-  layout:"default"
+  layout:"default",
+  data(){
+    return{
+      items:{}
+    }
+  },
+  computed:{
+    getListCLubItems(){
+      return this.$accessor.getListCLub
+    },
+  },
+  methods:{
+    async ListClub(){
+
+      // console.log("create club")
+      await this.$axios.$get('v1/club')
+        .then((response) => {
+          console.log("type",typeof response)
+
+          console.log(response.data)
+          if (response){
+            this.items = response
+            console.log("ok")
+            // return response.data
+          }
+        })
+        .catch((error) => {
+          //console.log(error)
+        })
+    }
+  },
+  mounted(){
+    // this.$accessor.getListCLubHandler()
+
+    this.ListClub()
+  }
+
 }
 </script>
 
