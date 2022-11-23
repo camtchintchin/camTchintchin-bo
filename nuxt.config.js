@@ -72,11 +72,19 @@ export default {
       },
       {
         rel: 'stylesheet',
-        href: '/assets/owlcarousel/owl.carousel.min.css'
+        href: '/assets/owlcarousel/dist/owl.carousel.min.css'
       },
       {
         rel: 'stylesheet',
-        href: '/assets/owlcarousel/owl.theme.default.min.css'
+        href: '/owlCarousel/assets/owl.theme.default.min.css'
+      },
+      {
+        rel: 'stylesheet',
+        href: '/owlCarousel/assets/owl.carousel.css'
+      },
+      {
+        rel: 'stylesheet',
+        href: '/aos/dist/aos.css'
       },
       {
         rel: 'stylesheet',
@@ -89,6 +97,10 @@ export default {
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://unpkg.com/aos@next/dist/aos.css"
       },
 
     ],
@@ -122,7 +134,7 @@ export default {
         body: true
       },
       {
-        src: '/assets/owlcarousel/owl.carousel.min.js',
+        src: '/owlCarousel/owl.carousel.min.js',
         body: true
       },
       {
@@ -131,6 +143,10 @@ export default {
       },
       {
         src: '/assets/js/pages/crud/datatables/basic/scrollable.js?v=7.0.4',
+        body: true
+      },
+      {
+        src: 'https://unpkg.com/aos@next/dist/aos.js',
         body: true
       },
 
@@ -164,11 +180,11 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-
-
-    // { src: '~/plugins/lodash.js'},
-
+    { src: "~/plugins/aos.js", ssr: "false" },
   ],
+  purgeCSS: {
+    whitelist: ["aos-init", "aos-animate", "data-aos-delay", "data-aos-duration", "fade-up", "zoom-in"],
+  },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

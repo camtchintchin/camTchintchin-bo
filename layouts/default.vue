@@ -1467,6 +1467,8 @@ import SideBar from "@/components/SideBar"
 import MobileSideBar from "@/components/MobileSideBar"
 import SubHeader from "@/components/SubHeader"
 import Header from "@/components/Header"
+// You can also use <link> for styles
+//
 export default Vue.extend( {
   name: "default",
   components:{
@@ -1478,7 +1480,6 @@ export default Vue.extend( {
   mounted(){
     KTInit.init();
     // document.body.style.zoom = "85%";
-
   },
   // middleware:["isAuthenticate"]
 })

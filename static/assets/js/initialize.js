@@ -12,6 +12,7 @@ var KTInit = function(){
       $(document).ready(function(){
         $(".owl-carousel").owlCarousel();
       });
+
       // Init Desktop & Mobile Headers
       KTLayoutHeader.init('kt_header', 'kt_header_mobile');
 

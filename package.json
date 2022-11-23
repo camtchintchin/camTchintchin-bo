@@ -9,23 +9,17 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-
     "@nuxt/components": "^2.2.1",
-
+    "aos": "^2.3.4",
     "bootstrap": "^4.6.2",
     "bootstrap-vue": "^2.23.1",
     "jquery": "^3.6.1",
-
     "node-sessionstorage": "^1.0.0",
     "nuxt": "^2.15.8",
     "nuxt-property-decorator": "^2.9.1",
-
-
-
     "vue": "^2.6.11",
     "vue-server-renderer": "^2.6.11",
     "vue-template-compiler": "^2.6.11"
-
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.8",

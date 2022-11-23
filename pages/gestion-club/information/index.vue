@@ -604,7 +604,7 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-4" data-aos="fade-left">
+      <div class="col-xl-4"  data-aos="fade-right">
         <div class="row ">
           <div class="col mb-4 mb-lg-0">
             <div class="card card-custom bg-light-warning gutter-b card-stretch" style="height: 250px">
@@ -723,6 +723,7 @@
           <!--begin::Nav Tabs-->
         </div>
       </div>
+
     </div>
 
 

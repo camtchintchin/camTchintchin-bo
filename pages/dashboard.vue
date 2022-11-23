@@ -17,7 +17,7 @@
               <!--end::Body-->
             </div>
             <h3 class="my-5 text-white">PROCHAINS MATCHS</h3>
-            <div class="row owl-carousel">
+            <div class="row">
               <div class="col-xl-6">
                 <!--begin::Tiles Widget 12-->
                 <div class="card card-custom gutter-b card-match " style="height: 150px">
