@@ -106,8 +106,8 @@
             <i class="symbol-badge bg-success"></i>
           </div>
           <div class="d-flex flex-column">
-            <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">Jonathan Morrison</a>
-            <div class="text-muted mt-1">Entrepreneur</div>
+            <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{  loggedInUser.lastname}}</a>
+            <div class="text-muted mt-1">{{  loggedInUser.username}}</div>
             <div class="navi mt-2">
               <a href="#" class="navi-item">
 								<span class="navi-link p-0 pb-2">
@@ -124,10 +124,10 @@
                       <!--end::Svg Icon-->
 										</span>
 									</span>
-									<span class="navi-text text-muted text-hover-primary">jm@gmail.com</span>
+									<span class="navi-text text-muted text-hover-primary">{{  loggedInUser.email}}</span>
 								</span>
               </a>
-              <a href="/" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Deconnexion</a>
+              <a href="#" @click="logout" class="btn btn-sm btn-light-danger font-weight-bolder py-2 px-5">Deconnexion</a>
             </div>
           </div>
         </div>
@@ -1467,10 +1467,14 @@ import SideBar from "@/components/SideBar"
 import MobileSideBar from "@/components/MobileSideBar"
 import SubHeader from "@/components/SubHeader"
 import Header from "@/components/Header"
+import {mapGetters} from "vuex";
+
 // You can also use <link> for styles
 //
 export default Vue.extend( {
   name: "default",
+  middleware:'isAuthenticate',
+
   components:{
     SideBar,
     MobileSideBar,
@@ -1481,6 +1485,48 @@ export default Vue.extend( {
     KTInit.init();
     // document.body.style.zoom = "85%";
   },
+  computed:{
+    ...mapGetters(["loggedInUser"]),
+  },
+  methods:{
+    async logout() {
+      // @ts-ignore
+      // this.$accessor.usersManagement.assignment.REMOVE_USER_ASSIGEMENT();
+
+      //
+      // if (this.sessionExpired){
+      //   // @ts-ignore
+      //   if (this.logoutType){
+      //     // console.log("is Pos")
+      //     window.location.href = "/?session=expired";
+      //   }else{
+      //     // console.log("is panelUser")
+      //     window.location.href = "/panelys-login?session=expired";
+      //   }
+      //   // @ts-ignore
+      // }else if (this.logoutType){
+      //   // console.log("is Pos")
+      //   window.location.href = "/";
+      // }else{
+      //   // console.log("is panelUser")
+      //   window.location.href = "/panelys-login";
+      // }
+
+
+      this.$accessor.logout();
+      window.location.href = '/login';
+      // if (userRoles.includes("panelys-user") ) {
+      //   window.location.href = "/panelys-login";
+      // }
+      //this.$auth.setUser(null)
+      //this.$auth.setUserToken('')
+      //this.$store.commit('SET_LOGGED_IN', false);
+      //this.$router.push('');
+      //window.location.href = '/';
+      //this.$router.push('/')
+    }
+  }
+
   // middleware:["isAuthenticate"]
 })
 </script>

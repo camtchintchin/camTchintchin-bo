@@ -7,6 +7,9 @@ export default {
     host: '0.0.0.0',
     port: 3000
   },
+  serverMiddleware: [
+    '~/api',
+  ],
 
   head: {
     title: 'Dashboard tchin-tchin',
@@ -181,6 +184,11 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: "~/plugins/aos.js", ssr: "false" },
+    { src: '~/plugins/axios' },
+    { src: '~/plugins/moment.js', ssr: false },
+    { src: '~/plugins/vee-val.ts', ssr: false },
+    { src: '~/plugins/persistedState.client.js' },
+    { src: '~plugins/numericValue.ts', ssr: false },
   ],
   purgeCSS: {
     whitelist: ["aos-init", "aos-animate", "data-aos-delay", "data-aos-duration", "fade-up", "zoom-in"],
@@ -192,6 +200,8 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     '@nuxt/typescript-build',
+    'nuxt-typed-vuex',
+    '@nuxtjs/dotenv'
 
 
   ],
@@ -200,11 +210,20 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
+    'nuxt-typed-vuex',
 
+    { src: '@nuxtjs/axios', mode: 'client' },
   ],
   bootstrapVue: {
     bootstrapCSS: false,
     bootstrapVueCSS: true,
+  },
+  axios: {
+    // proxy: true
+    // baseURL: `${process.env.api_url}`,
+    proxyHeaders: false,
+    credentials: false,
+    // proxy: true
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

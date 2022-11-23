@@ -2696,7 +2696,7 @@
       </div>
       <div class="row pt-5">
         <div class="col mb-4 mb-lg-0">
-          <a href='/dashboard' class="btn  px-6 py-3 btn-red">
+          <a href='/' class="btn  px-6 py-3 btn-red">
             <b-col>
               <i class="icon-2x text-white-50 text-hover-dark-50 flaticon-home"></i>
             </b-col>
