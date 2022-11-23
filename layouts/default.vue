@@ -1485,6 +1485,8 @@ export default Vue.extend( {
 </script>
 
 <style lang="scss" >
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
+
 body{
   background: #1e1e2d;
 }
@@ -1560,6 +1562,33 @@ body{
     color:black;
   }
 }
+.card-blur{
+  color: #000;
+
+  min-height: 85px;
+  max-height: 80px;
+  font-weight: bold;
+  //background: white;
+  //opacity:0.7;
+  /* From https://css.glass */
+  border-radius: 16px;
+  border: none;
+
+
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.77);
+  backdrop-filter: blur(6.2px);
+  -webkit-backdrop-filter: blur(6.2px);
+
+
+  &:hover{
+    color:black;
+  }
+  //border: 1px solid rgba(255, 255, 255, 0.3);
+
+  //filter: blur(8px);
+  //-webkit-filter: blur(8px);
+}
 
 .form-add-club{
   margin: auto;
@@ -1576,4 +1605,26 @@ body{
   min-height: 70px;
   width: 165px;
 }
+.card-detail{
+  color: white;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+}
+
+.name-player{
+  font: normal normal 900 50px Poppins;
+}
+.num-player{
+  font: normal normal 900 80px Poppins;
+}
+.Poppins{
+  font-family:Poppins;
+
+}
+.card{
+  box-shadow: -1px 1px 18px 8px rgba(0,0,0,0.14);
+  -webkit-box-shadow: -1px 1px 18px 8px rgba(0,0,0,0.14);
+  -moz-box-shadow: -1px 1px 18px 8px rgba(0,0,0,0.14);
+}
+
 </style>

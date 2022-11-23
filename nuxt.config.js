@@ -78,6 +78,18 @@ export default {
         rel: 'stylesheet',
         href: '/assets/owlcarousel/owl.theme.default.min.css'
       },
+      {
+        rel: 'stylesheet',
+        href: '/assets/css/custom.scss'
+      },
+      {
+        rel: 'stylesheet',
+        href: '/assets/plugins/custom/datatables/datatables.bundle.css?v=7.0.4'
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap",
+      },
 
     ],
     script: [
@@ -113,6 +125,15 @@ export default {
         src: '/assets/owlcarousel/owl.carousel.min.js',
         body: true
       },
+      {
+        src: '/assets/plugins/custom/datatables/datatables.bundle.js?v=7.0.4',
+        body: true
+      },
+      {
+        src: '/assets/js/pages/crud/datatables/basic/scrollable.js?v=7.0.4',
+        body: true
+      },
+
 
       // {
       //   src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js',
@@ -137,6 +158,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+
 
   ],
 

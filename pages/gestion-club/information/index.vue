@@ -50,7 +50,7 @@
                   <span class="text-muted mt-3 font-weight-bold font-size-sm">10 membres enregistrés</span>
                 </h3>
                 <div class="card-toolbar">
-                  <a href="/gestion-club/information/gestion-joueurs/details-joueurajouter-un-membre" class="btn btn-success font-weight-bolder font-size-sm">
+                  <a href="/gestion-club/information/gestion-staff/ajouter-un-membre" class="btn btn-success font-weight-bolder font-size-sm">
 
                     <i class=" text-dark-50 flaticon2-plus"></i>
 
@@ -108,7 +108,7 @@
                         <span class="text-dark-75 font-weight-bolder d-block font-size-lg">+225 00 00 00 00 00</span>
                       </td>
                       <td class="text-left pr-0">
-                        <a href="/gestion-club/information/gestion-joueurs/details-joueur" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+                        <a href="/gestion-club/information/gestion-staff/details-staff" class="btn btn-icon btn-light btn-hover-primary btn-sm">
 																<span class="svg-icon svg-icon-md svg-icon-primary">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
 																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -172,7 +172,7 @@
                         <span class="text-dark-75 font-weight-bolder d-block font-size-lg">+225 00 00 00 00 00</span>
                       </td>
                       <td class="text-left pr-0">
-                        <a href="/gestion-club/information/gestion-joueurs/details-joueur" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+                        <a href="/gestion-club/information/gestion-staff/details-staff" class="btn btn-icon btn-light btn-hover-primary btn-sm">
 																<span class="svg-icon svg-icon-md svg-icon-primary">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
 																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -236,7 +236,7 @@
                         <span class="text-dark-75 font-weight-bolder d-block font-size-lg">+225 00 00 00 00 00</span>
                       </td>
                       <td class="text-left pr-0">
-                        <a href="/gestion-club/information/gestion-joueurs/details-joueur" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+                        <a href="/gestion-club/information/gestion-staff/details-staff" class="btn btn-icon btn-light btn-hover-primary btn-sm">
 																<span class="svg-icon svg-icon-md svg-icon-primary">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
 																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -365,7 +365,7 @@
                   <span class="text-muted mt-3 font-weight-bold font-size-sm">10 joueurs enregistrés</span>
                 </h3>
                 <div class="card-toolbar">
-                  <a href="/gestion-club/information/gestion-joueurs/details-joueurajouter-un-joueur" class="btn btn-success font-weight-bolder font-size-sm">
+                  <a href="/gestion-club/information/gestion-joueurs/ajouter-un-joueur" class="btn btn-success font-weight-bolder font-size-sm">
 
                     <i class=" text-dark-50 flaticon2-plus"></i>
 
@@ -414,7 +414,7 @@
                         <span class="text-dark-75 font-weight-bolder d-block font-size-lg">Toure Sylla</span>
                       </td>
                       <td>
-                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">President</span>
+                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">Attaquant</span>
                       </td>
                       <td>
                         <span class="text-dark-75 font-weight-bolder d-block font-size-lg">Abidjan/Marcory</span>
@@ -542,7 +542,7 @@
                         <span class="text-dark-75 font-weight-bolder d-block font-size-lg">Toure Sylla</span>
                       </td>
                       <td>
-                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">President</span>
+                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">Defenseur</span>
                       </td>
                       <td>
                         <span class="text-dark-75 font-weight-bolder d-block font-size-lg">Abidjan/Marcory</span>

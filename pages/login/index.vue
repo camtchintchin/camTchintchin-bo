@@ -8,7 +8,7 @@
         <!--begin::Aside-->
         <div  style="min-width: 40%" class="d-none d-lg-flex">
           <img
-            src="/assets/media/img/bg-login-1.png"
+            src="/assets/media/img/bg-login-no-logo.png"
             alt="Logo"
             style="max-width: 500px;min-width: 100%"
             class="img-fluid mx-auto d-block img-responsive"
