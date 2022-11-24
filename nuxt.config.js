@@ -230,5 +230,6 @@ export default {
   build: {
     babel: { compact: true },
     transpile: ['vee-validate/dist/rules'],
+    standalone: true
   }
 }
