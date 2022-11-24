@@ -9,7 +9,8 @@ export const state= ()=>{
     user: {} as any,
     auth: {} as any,
     loggedIn: false,
-    listCLub:{}
+    listCLub:{},
+    listCountries:{}
   }
 }
 
@@ -17,6 +18,7 @@ type RootState = ReturnType<typeof state>
 
 export const getters = getterTree(state, {
   getListCLub: (state) => state.listCLub,
+  getListCountries: (state) => state.listCountries,
 
 // @ts-ignore
   isAuthenticated(state) {
@@ -50,6 +52,11 @@ export const mutations = mutationTree(state, {
     state.listCLub = value;
     // state.user = null;
   },
+  SET_LIST_COUNTRIES(state,value) {
+    state.listCountries = value;
+    // state.user = null;
+  },
+
   LOGOUT(state) {
     state.loggedIn = false;
     state.user = null;
@@ -114,6 +121,23 @@ export const actions = actionTree(
           // this.items = response.data
           console.log("response succs",response)
           commit("SET_LIST_CLUB",response)
+          // return response.data
+        }
+      })
+        .catch((error) => {
+          //console.log(error)
+        })
+    },
+
+    async getcountries({commit}){
+      await this.$axios.$get("/v1/countries").then((response) => {
+        console.log("type",response)
+
+        console.log(response.data)
+        if (response.status){
+          // this.items = response.data
+          console.log("response succs",response)
+          commit("SET_LIST_COUNTRIES",response)
           // return response.data
         }
       })

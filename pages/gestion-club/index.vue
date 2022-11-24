@@ -76,7 +76,7 @@
                           <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{item.contact}}</span>
                         </td>
                         <td class="text-left pr-0">
-                          <a href="/gestion-club/information/" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+                          <a :href="'/gestion-club/information/'+item.id" class="btn btn-icon btn-light btn-hover-primary btn-sm">
 																<span class="svg-icon svg-icon-md svg-icon-primary">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
 																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

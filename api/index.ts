@@ -191,9 +191,10 @@ app.post('*', async (req, res) => {
           "Authorization": req.headers.authorization as string
         }
       })
-      console.log([req.url, req.headers.authorization,body,response.data])
+      console.log([req.url, req.headers.authorization,body,response])
     } else {
       console.log("in elese",baseUrl + req.url)
+
       response = await instance.post(baseUrl + req.url, body)
       // console.log([req.url,body,response])
     }
@@ -202,7 +203,7 @@ app.post('*', async (req, res) => {
     // console.log("get " + JSON.stringify(response.data))
 
     if (response){
-      res.json({data:response})
+      res.json({ data: (response.data) })
 
     }else{
       res.json({data: {code:'99'}})
@@ -271,69 +272,71 @@ app.put('*', async (req, res) => {
 
   // res.json(response.data)
 })
-app.get('/v1/club', async (req, res) => {
-  console.log("request get",req.url)
-  try {
-
-    let baseUrl = process.env.api_url_club +"/api"
-
-    let response:any
-    if (req.headers.authorization) {
-      console.log("request in condition")
-
-      response = await instance.get(baseUrl + req.url, {
-        headers: {
-          "Authorization": req.headers.authorization as string
-        }
-      })
-      console.log("request after response")
-
-      console.log([req.url,response.data,req.headers.authorization])
-    } else {
-      // console.log("else")
-      response = await instance.get(baseUrl + req.url)
-      console.log([req.url,response.data])
-    }
-    // console.log("get " + JSON.stringify(response.data))
-
-    res.json(response.data.data)
-  } catch (error: any) {
-    console.log('erreur get', error)
-    const response = JSON.stringify((error)?.response?.data.detail)
-    // console.log(`Error in get: ` + response);
-
-    res.json({ data: (response), status: false })
-  }
-})
 
 app.get('*', async (req, res) => {
-  console.log("request get")
-  try {
-    let baseUrl = process.env.api_url +"/api"
+  console.log("request get" ,req.url)
+  if (req.url.includes("/v1/club")){
+    console.log("request get",req.url)
+    try {
 
-    let response: AxiosResponse<any> = {} as AxiosResponse<any>
-    if (req.headers.authorization) {
-      response = await instance.get(baseUrl + req.url, {
-        headers: {
-          "Authorization": req.headers.authorization as string
-        }
-      })
-      console.log([req.url,response.data,req.headers.authorization])
-    } else {
-      // console.log("else")
-      response = await instance.get(baseUrl + req.url)
-      console.log([req.url,response.data])
+      let baseUrl = process.env.api_url_club +"/api"
+
+      let response:any
+      if (req.headers.authorization) {
+        console.log("request in condition")
+
+        response = await instance.get(baseUrl + req.url, {
+          headers: {
+            "Authorization": req.headers.authorization as string
+          }
+        })
+        console.log("request after response")
+
+        console.log([req.url,response.data,req.headers.authorization])
+      } else {
+        // console.log("else")
+        response = await instance.get(baseUrl + req.url)
+        console.log([req.url,response.data])
+      }
+      // console.log("get " + JSON.stringify(response.data))
+
+      res.json(response.data.data)
+    } catch (error: any) {
+      console.log('erreur get', error)
+      const response = JSON.stringify((error)?.response?.data.detail)
+      // console.log(`Error in get: ` + response);
+
+      res.json({ data: (response), status: false })
     }
-    // console.log("get " + JSON.stringify(response.data))
+  }else{
+    try {
+      let baseUrl = process.env.api_url +"/api"
 
-    res.json({ data: (response.data) })
-  } catch (error: any) {
-    console.log('erreur get', error)
-    const response = JSON.stringify((error)?.response?.data.detail)
-    // console.log(`Error in get: ` + response);
+      let response: AxiosResponse<any> = {} as AxiosResponse<any>
+      if (req.headers.authorization) {
+        response = await instance.get(baseUrl + req.url, {
+          headers: {
+            "Authorization": req.headers.authorization as string
+          }
+        })
+        console.log([req.url,response.data,req.headers.authorization])
+      } else {
+        // console.log("else")
+        response = await instance.get(baseUrl + req.url)
+        console.log([req.url,response.data])
+      }
+      // console.log("get " + JSON.stringify(response.data))
 
-    res.json({ data: (response), status: false })
+      res.json({ data: (response.data) })
+    } catch (error: any) {
+      console.log('erreur get', error)
+      const response = JSON.stringify((error)?.response?.data.detail)
+      // console.log(`Error in get: ` + response);
+
+      res.json({ data: (response), status: false })
+    }
   }
+
 })
 
 // Error handler
