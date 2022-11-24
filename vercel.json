@@ -7,17 +7,6 @@
       "config": {
         "serverFiles": ["api/**"]
       }
-    },
-    {
-      "src": "api/**/*.ts",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1.ts",
-      "methods": ["GET", "POST", "PUT", "PATH", "OPTIONS"]
     }
   ]
 }
