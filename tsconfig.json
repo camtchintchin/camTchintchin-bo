@@ -9,7 +9,7 @@
     "sourceMap": true,
     "strict": true,
 
-    "noEmit": true,
+    "noEmit": false,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
     "baseUrl": ".",
