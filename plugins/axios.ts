@@ -1,6 +1,5 @@
 import { Inject } from "@nuxt/types/app";
 import axios, { AxiosResponse } from "axios";
-const moment = require('moment')
 export default function ({ $axios }: { $axios: any }, inject: Inject) {
 
 
