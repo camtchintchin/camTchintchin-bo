@@ -196,6 +196,7 @@ export default Vue.extend( {
   },
   methods:{
     makeToast(msg: any) {
+      // @ts-ignore
       this.$bvToast.toast(`${msg} `, {
         title: '',
         autoHideDelay: 5000,
@@ -222,8 +223,8 @@ export default Vue.extend( {
           // password: "Ingenieur2022@@@"
         }
         console.log("form",formSign)
-
-           await this.$accessor.generateTokenHandler(formSign).then(  (response) => {
+        // @ts-ignore
+        await this.$accessor.generateTokenHandler(formSign).then(  (response) => {
           console.log("response ss",response)
            if (response.response.data.code == '99'){
              console.log("response in logn")
@@ -268,6 +269,7 @@ export default Vue.extend( {
       try {
 
         // console.log("user datat",userData)
+        // @ts-ignore
         this.$accessor.LOGIN_SUCCESS(userData)
         this.$router.push('/')
 
