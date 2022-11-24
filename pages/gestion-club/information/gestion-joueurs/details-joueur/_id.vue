@@ -11,8 +11,8 @@
               <div class="card-body">
                 <b-row>
                   <b-col md="8">
-                    <p  class="text-white font-weight-bolder line-height-lg  name-player">Drogba </p>
-                    <h3  class="text-white font-weight-bolder line-height-lg mt-n5 mb-0 mb-lg-15 Poppins">Didier</h3>
+                    <p  class="text-white font-weight-bolder line-height-lg  name-player">{{ user.firstname }}</p>
+                    <h3  class="text-white font-weight-bolder line-height-lg mt-n5 mb-0 mb-lg-15 Poppins">{{ user.lastname }}</h3>
                     <b-row >
                       <b-col md="4" >
                         <div class="py-2">
@@ -309,7 +309,37 @@
 
 <script>
 export default {
-  name: "details-joueur"
+  name: "details-joueur",
+  data(){
+    return{
+
+      user:{},
+      id:this.$route.params.id
+    }
+  },
+  methods:{
+    async infoUser(){
+      console.log("id log",this.id)
+      // console.log("create club")
+      await this.$axios.$get('v1/users/club/'+this.id)
+        .then((response) => {
+          console.log("type",typeof response)
+
+          console.log(response.data)
+          if (response){
+            this.user = response.data.data
+            console.log("ok")
+            // return response.data
+          }
+        })
+        .catch((error) => {
+          //console.log(error)
+        })
+    },
+  },
+  mounted(){
+    this.infoUser()
+  }
 }
 </script>
 

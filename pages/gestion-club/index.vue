@@ -49,7 +49,14 @@
                       <th style="min-width: 120px">Actions</th>
                     </tr>
                     </thead>
-                    <tbody v-for="(item, key) in items">
+                    <tbody v-if="items.length == 0" >
+                    <tr>
+                      <td colspan="7" class="text-dark-75 font-size-lg text-center">
+                        Aucun enregistrement
+                      </td>
+                    </tr>
+                    </tbody>
+                    <tbody v-else v-for="(item, key) in items">
                       <tr>
                         <td class="pl-0 py-8">
                           <div class="d-flex align-items-center">

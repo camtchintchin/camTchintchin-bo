@@ -30,7 +30,7 @@
               <label class="col-lg-2 col-form-label text-right">Contact club:</label>
               <div class="col-lg-4">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="+225 00 00 00 00" v-model="form.contact" />
+                  <input type="text" class="form-control" placeholder="+225 00 00 00 00" v-model="form.contact" @keypress="$numericValue($event)" />
                   <div class="input-group-append">
                       <span class="input-group-text">
                         <i class="la la-info-circle"></i>
@@ -121,11 +121,11 @@ export default Vue.extend({
   data(){
     return{
       form:{
-        "name": "Asec1 ",
-        "creation_year": "2022",
-        "contact": "+22501010102",
-        "email": "club1@gmail.com",
-        "description": "descriptio du club"
+        "name": "",
+        "creation_year": "",
+        "contact": "+225",
+        "email": "",
+        "description": ""
       },
       show: true,
       showDismissibleAlert: false,

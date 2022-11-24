@@ -174,50 +174,120 @@ app.post('/v1/club', async (req, res) => {
 
 app.post('*', async (req, res) => {
   console.log("POST")
-  const body = req.body
+  if (req.url.includes("/v1/club")){
+    console.log("POST api" + req.url)
+    console.log("Base api" + baseUrl)
+    const data = req.body
+    //console.log("data : "  + JSON.stringify(data))
+    // console.log("request")
+    // console.log("req.body",req.body)
+    try {
+      baseUrl= process.env.api_url_club+"/api"
+      console.log("try  ")
+      // console.log(baseUrl + req.url)
+      // console.log("request")
+      const body = req.body
+      // if (req.body) {
+      //   body = JSON.parse(req.body)
+      // }
 
-  // req.body = decrypt(data.aesData, key)
-  // console.log("request")
-  // console.log([req.url,req.body])
-  try {
+      // console.log(req.headers)
+      let response: any
 
-    let response: AxiosResponse<any> = {} as AxiosResponse<any>
-    if (req.headers.authorization) {
-      console.log(req.headers)
-      console.log("base url in response",baseUrl)
+      console.log("base url before",baseUrl)
 
-      response = await instance.post(baseUrl + req.url, body, {
-        headers: {
-          "Authorization": req.headers.authorization as string
-        }
-      })
-      console.log([req.url, req.headers.authorization,body,response])
-    } else {
-      console.log("in elese",baseUrl + req.url)
+      if (req.headers.authorization) {
+        // console.log(req.headers.authorization)
+        console.log("base url in response",baseUrl)
 
-      response = await instance.post(baseUrl + req.url, body)
-      // console.log([req.url,body,response])
+        response = await instance.post(baseUrl + req.url, body, {
+          headers: {
+            "Authorization": req.headers.authorization as string
+          }
+        })
+        console.log(["url-->"+req.url, "header-->"+req.headers.authorization,"body-->"+body])
+      } else {
+        console.log("in elese","Baseurl-->"+baseUrl + "url-->"+req.url)
+        response = await instance.post(baseUrl + req.url, body)
+        // console.log([req.url,body,response])
+      }
+      // console.log('/users/signin : ' + JSON.stringify(response.data))
+      // const refreshToken = response.data.refresh_token
+      // storage.setItem('refreshToken', refreshToken)
+      console.log("error 1")
+      if (response){
+        res.json({data:response.data})
+
+      }else{
+        res.json({data: {code:'99'}})
+      }
+      // console.log("json test", {response})
+
+      //console.log('item set refreshToken:', storage.getItem('refreshToken'))
+      // console.log([req.url, response.data])
+      // con  sole.log("error 3")
+
+
+
+
+    } catch (error: any) {
+      console.log("error in post signin")
+      // console.log("timeout")
+      console.log(error)
+      // console.log((error)?.response)
+      // const response = JSON.stringify((error)?.response?.data.detail)
+      // console.log(`Error: ` + response);
+      res.status(400)
+      res.json({code:"99"})
     }
-    console.log("error 3")
+  }else{
+    const body = req.body
+    baseUrl= process.env.api_url+"/api"
 
-    // console.log("get " + JSON.stringify(response.data))
+    // req.body = decrypt(data.aesData, key)
+    // console.log("request")
+    // console.log([req.url,req.body])
+    try {
 
-    if (response){
-      res.json({ data: (response.data) })
+      let response: AxiosResponse<any> = {} as AxiosResponse<any>
+      if (req.headers.authorization) {
+        console.log(req.headers)
+        console.log("base url in response",baseUrl)
 
-    }else{
-      res.json({data: {code:'99'}})
+        response = await instance.post(baseUrl + req.url, body, {
+          headers: {
+            "Authorization": req.headers.authorization as string
+          }
+        })
+        console.log([req.url, req.headers.authorization,body,response])
+      } else {
+        console.log("in elese",baseUrl + req.url)
+
+        response = await instance.post(baseUrl + req.url, body)
+        // console.log([req.url,body,response])
+      }
+      console.log("error 3")
+
+      // console.log("get " + JSON.stringify(response.data))
+
+      if (response){
+        res.json({ data: (response.data) })
+
+      }else{
+        res.json({data: {code:'99'}})
+      }
+    } catch (error: any) {
+      console.log("error")
+      // console.log("timeout")
+      console.log(error)
+      // console.log((error)?.response)
+      const response = JSON.stringify((error)?.response?.data.detail)
+      // console.log(`Error: ` + response);
+      res.status(400)
+      res.json({ data: (response), status: false })
     }
-  } catch (error: any) {
-    console.log("error")
-    // console.log("timeout")
-    console.log(error)
-    // console.log((error)?.response)
-    const response = JSON.stringify((error)?.response?.data.detail)
-    // console.log(`Error: ` + response);
-    res.status(400)
-    res.json({ data: (response), status: false })
   }
+
 
   // res.json(response.data)
 })

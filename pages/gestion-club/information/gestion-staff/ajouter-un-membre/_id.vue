@@ -3,7 +3,7 @@
     <div class="col-xl-12 login-content flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
       <div class="form-add-club">
         <div class=" pt-lg-0 pt-5 text-center">
-          <h5 class="font-weight-bolder  text-dark font-size-h4 font-size-h1-lg">Formulaire de création de joueur</h5>
+          <h5 class="font-weight-bolder  text-dark font-size-h4 font-size-h1-lg">Formulaire de création de membre du staff</h5>
           <!--									<a href="javascript:;" id="kt_login_signup" class="text-primary font-weight-bolder">Create an Account</a></span>-->
         </div>
         <form class="form">
@@ -22,7 +22,7 @@
             <div class="form-group row mt-3">
               <label class="col-lg-2 col-form-label text-right">Identifiant:</label>
               <div class="col-lg-4">
-                <input type="text" class="form-control" required placeholder="Prenom" v-model="form.username" />
+                <input type="text" class="form-control" required placeholder="Identifiant" v-model="form.username" />
               </div>
               <label class="col-lg-2 col-form-label text-right">Nationalite:</label>
               <div class="col-lg-4">
@@ -36,7 +36,7 @@
               <label class="col-lg-2 col-form-label text-right">Contact:</label>
               <div class="col-lg-4">
                 <div class="input-group">
-                  <input type="text" class="form-control" required placeholder="+225 00 00 00 00" v-model="form.contact" />
+                  <input type="text" class="form-control" required placeholder="+225 00 00 00 00" v-model="form.contact"  @keypress="$numericValue($event)" />
                   <div class="input-group-append">
                       <span class="input-group-text">
                         <i class="la la-info-circle"></i>
@@ -56,20 +56,20 @@
                 </div>
               </div>
             </div>
-            <div class="form-group row mt-3">
-              <label class="col-lg-2 col-form-label text-right">Description:</label>
-              <div class="col-lg-4">
-                <div class="input-group">
-                  <textarea type="text" class="form-control" required placeholder="description" v-model="form.description"></textarea>
-                </div>
-              </div>
-              <label class="col-lg-2 col-form-label text-right">Date de naissance:</label>
-              <div class="col-lg-4">
-                <div class="input-group">
-                  <input type="date" class="form-control" required placeholder="creation" />
-                </div>
-              </div>
-            </div>
+<!--            <div class="form-group row mt-3">-->
+<!--              <label class="col-lg-2 col-form-label text-right">Description:</label>-->
+<!--              <div class="col-lg-4">-->
+<!--                <div class="input-group">-->
+<!--                  <textarea type="text" class="form-control" required placeholder="description" v-model="form.description"></textarea>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <label class="col-lg-2 col-form-label text-right">Date de naissance:</label>-->
+<!--              <div class="col-lg-4">-->
+<!--                <div class="input-group">-->
+<!--                  <input type="date" class="form-control" required placeholder="creation" />-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
             <div class="form-group row mt-3">
 
 
@@ -77,6 +77,13 @@
               <div class="col-lg-4">
                 <div class="input-group" >
                   <b-form-select v-model="form.residence_country" :options="listCountries"></b-form-select>
+                </div>
+
+              </div>
+              <label class="col-lg-2 col-form-label text-right">Poste:</label>
+              <div class="col-lg-4">
+                <div class="input-group" >
+                  <b-form-select v-model="post" :options="listPost"></b-form-select>
                 </div>
 
               </div>
@@ -101,7 +108,7 @@
     <b-modal id="modalForm" centered  size="sm" class="ml-50"  hide-header>
       <div class="modal-body">
         <div class="text-center">
-          <h1>Joueur ajouté avec succes</h1>
+          <h1>Membre ajouté avec succes</h1>
           <i class="flaticon2-check-mark text-success" style="font-size: 50px"></i>
         </div>
 
@@ -129,6 +136,7 @@ export default {
   name: "ajouter-un-joueur",
   data(){
     return{
+      id:this.$route.params.id,
       selected: null,
       listCountries:[
         {
@@ -148,17 +156,36 @@ export default {
           text: "Cameroon",
         },
       ],
+      post:null,
+      listPost:[
+        {
+          value: null,
+          text: "Choisissez une option",
+        },{
+          value: "President",
+          text: "President",
+        },{
+          value: "Vice-president",
+          text: "Vice-president",
+        },{
+          value: "Entraineur",
+          text: "Entraineur",
+        },{
+          value: "Directeur de Methodologie",
+          text: "Directeur de Methodologie",
+        },
+      ],
       form:{
-        "nationality":0,
+        "nationality":null,
         "residence_country":null,
         "residence_city":1,
-        "profile_id":2,
+        "profile_id":4,
         "country_id":1,
         "city_id":1,
         "lastname":"",
         "firstname":"",
         "username":"",
-        "contact": "",
+        "contact": "+225",
         "email": "",
         "password":"Ingenieur2022@@@",
         "repeat_password":"Ingenieur2022@@@"
@@ -175,19 +202,19 @@ export default {
   methods:{
     async getCountries(){
       const list =[
-            {
-              "id": 54,
-              "name": "Cote D'Ivoire (Ivory Coast)",
-            },{
-              "id": 83,
-              "name": "Ghana",
-            },{
-              "id": 35,
-              "name": "Burkina Faso",
-            },{
-            "id": 38,
-            "name": "Cameroon",
-            },
+        {
+          "id": 54,
+          "name": "Cote D'Ivoire (Ivory Coast)",
+        },{
+          "id": 83,
+          "name": "Ghana",
+        },{
+          "id": 35,
+          "name": "Burkina Faso",
+        },{
+          "id": 38,
+          "name": "Cameroon",
+        },
       ]
       this.listCountries = list
       // await this.$axios.$get("/v1/countries").then((response) => {
@@ -240,7 +267,19 @@ export default {
         .then((response) => {
           console.log("stat",response.data.status)
           if (response.data.status){
-            this.$bvModal.show('modalForm');
+            const dataProfil ={
+              "user_id":response.data.data.id,
+              "profile_id":4,
+              "club_id":this.id,
+              "poste":this.post
+            }
+            this.$axios
+              .$post('v1/club/affect/user',dataProfil)
+              .then((response) => {
+                if (response.data.status){
+                  this.$bvModal.show('modalForm');
+                }
+              })
           }else{
             this.messageError = "Une erreur est survenur lors de la création"
             this.showDismissibleAlert = true
