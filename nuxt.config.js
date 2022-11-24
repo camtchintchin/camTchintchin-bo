@@ -1,8 +1,6 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-  ssr: false,
   telemetry: false,
-  target: 'server',
   server: {
     host: '0.0.0.0',
     port: 3000
@@ -183,12 +181,12 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: "~/plugins/aos.js", ssr: "false" },
-    { src: '~/plugins/axios' },
+    { src: "~/plugins/aos.js", ssr: false },
+    { src: '~/plugins/axios', ssr: false},
     { src: '~/plugins/moment.js', ssr: false },
     { src: '~/plugins/vee-val.ts', ssr: false },
     { src: '~/plugins/persistedState.client.js' },
-    { src: '~plugins/numericValue.ts', ssr: false },
+    { src: '~plugins/numericValue.ts', ssr: false }
   ],
   purgeCSS: {
     whitelist: ["aos-init", "aos-animate", "data-aos-delay", "data-aos-duration", "fade-up", "zoom-in"],
@@ -202,8 +200,6 @@ export default {
     '@nuxt/typescript-build',
     'nuxt-typed-vuex',
     '@nuxtjs/dotenv'
-
-
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
