@@ -7,7 +7,7 @@
         <!--begin::Menu Nav-->
         <ul class="menu-nav">
           <li class="menu-item menu-item-active" aria-haspopup="true">
-            <a href="/" class="menu-link">
+            <a type="button" @click="$router.push('/')" class="menu-link">
 										<span class="svg-icon menu-icon">
 											<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -27,40 +27,40 @@
             <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
           </li>
           <li class="menu-item " aria-haspopup="true">
-            <a href="/gestion-club" class="menu-link">
+            <a type="button" @click="$router.push('/gestion-club')" class="menu-link">
               <i class="icon-2x text-dark-50 flaticon2-layers-2"></i>
               <span class="menu-text ml-5"> CLUBS</span>
             </a>
           </li>
-          <li class="menu-item " aria-haspopup="true">
-            <a href="clubs-et-joueurs" class="menu-link">
+<!--          <li class="menu-item " aria-haspopup="true">-->
+<!--            <a href="clubs-et-joueurs" class="menu-link disabled">-->
 
-              <i class="icon-2x text-dark-50 flaticon-trophy"></i>
-              <span class="menu-text ml-5"> COMPETITION</span>
-            </a>
-          </li>
-          <li class="menu-item " aria-haspopup="true">
-            <a href="clubs-et-joueurs" class="menu-link">
-              <i class="icon-2x text-dark-50 flaticon2-user"></i>
-              <span class="menu-text ml-5"> UTILISATEURS</span>
-            </a>
-          </li>
-          <li class="menu-item " aria-haspopup="true">
-            <a href="clubs-et-joueurs" class="menu-link">
-              <i class="icon-2x text-dark-50 flaticon2-sort"></i>
-
-
-              <span class="menu-text ml-5"> MERCATO</span>
-            </a>
-          </li>
-          <li class="menu-item " aria-haspopup="true">
-            <a href="clubs-et-joueurs" class="menu-link">
-              <i class="icon-2x text-dark-50 flaticon2-sheet"></i>
+<!--              <i class="icon-2x text-dark-50 flaticon-trophy"></i>-->
+<!--              <span class="menu-text ml-5"> COMPETITION</span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li class="menu-item " aria-haspopup="true">-->
+<!--            <a href="clubs-et-joueurs" class="menu-link disabled">-->
+<!--              <i class="icon-2x text-dark-50 flaticon2-user"></i>-->
+<!--              <span class="menu-text ml-5"> UTILISATEURS</span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li class="menu-item " aria-haspopup="true">-->
+<!--            <a href="clubs-et-joueurs" class="menu-link disabled">-->
+<!--              <i class="icon-2x text-dark-50 flaticon2-sort"></i>-->
 
 
-              <span class="menu-text ml-5"> ACTUALITE</span>
-            </a>
-          </li>
+<!--              <span class="menu-text ml-5"> MERCATO</span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li class="menu-item " aria-haspopup="true">-->
+<!--            <a href="clubs-et-joueurs" class="menu-link disabled">-->
+<!--              <i class="icon-2x text-dark-50 flaticon2-sheet"></i>-->
+
+
+<!--              <span class="menu-text ml-5"> ACTUALITE</span>-->
+<!--            </a>-->
+<!--          </li>-->
 <!--          <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">-->
 <!--            <a href="javascript:;" class="menu-link menu-toggle">-->
 <!--										<span class="svg-icon menu-icon">-->

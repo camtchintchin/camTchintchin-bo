@@ -77,8 +77,15 @@
             <div class="row">
               <div class="col-lg-5"></div>
               <div class="col-lg-7">
-                <button type="submit" class="btn-blue mr-2 p-4" @click.prevent="createClub">Valider</button>
-                <a type="button" href="#" onclick="history.back()" class="btn-yellow p-4">Retour</a>
+                <button type="submit" class="btn-blue mr-2 p-4" @click.prevent="createClub">
+                  <span v-if="this.isSubmit" class="d-flex justify-content-center">
+                    <span>
+                      <b-spinner label="chargement..."></b-spinner>
+                    </span>
+                  </span>
+                  <span v-if="!this.isSubmit">Valider</span>
+                </button>
+                <a type="button" href="#" @click="$router.back()" class="btn-yellow p-4">Retour</a>
               </div>
             </div>
           </div>
@@ -127,6 +134,7 @@ export default Vue.extend({
         "email": "",
         "description": ""
       },
+      isSubmit:false,
       show: true,
       showDismissibleAlert: false,
       messageError: '',
@@ -144,12 +152,12 @@ export default Vue.extend({
       })
     },
 
-    createClub(){
+    async createClub(){
       // return this.$bvModal.show('modalForm');
-
+      this.isSubmit = true
       // console.log("create club")
       const data = this.form
-      this.$axios
+      await this.$axios
         .$post('v1/club',data)
         .then((response) => {
           console.log(response.data.status)
@@ -164,6 +172,7 @@ export default Vue.extend({
         .catch((error) => {
           //console.log(error)
         })
+      this.isSubmit = false
     },
     closeModal(){
       history.back()

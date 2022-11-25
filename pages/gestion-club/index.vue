@@ -12,7 +12,7 @@
                   <span class="text-muted mt-3 font-weight-bold font-size-sm">50 clubs enregistrés</span>
                 </h3>
                 <div class="card-toolbar">
-                  <a href="/gestion-club/creer-un-club" class="btn btn-success font-weight-bolder font-size-sm">
+                  <a type="button" @click="$router.push('/gestion-club/creer-un-club')" class="btn btn-success font-weight-bolder font-size-sm">
 
                     <i class=" text-dark-50 flaticon2-plus"></i>
 
@@ -50,9 +50,20 @@
                     </tr>
                     </thead>
                     <tbody v-if="items.length == 0" >
+                      <tr>
+                        <td colspan="7" class="text-dark-75 font-size-lg text-center">
+                          Aucun enregistrement
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tbody v-if="isFetching" >
                     <tr>
                       <td colspan="7" class="text-dark-75 font-size-lg text-center">
-                        Aucun enregistrement
+                        <div class="d-flex justify-content-center">
+                          <div>
+                            <b-spinner label="chargement..."></b-spinner>
+                          </div>
+                        </div>
                       </td>
                     </tr>
                     </tbody>
@@ -83,7 +94,7 @@
                           <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{item.contact}}</span>
                         </td>
                         <td class="text-left pr-0">
-                          <a :href="'/gestion-club/information/'+item.id" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+                          <a type="button"  @click="$router.push('/gestion-club/information/'+item.id)" class="btn btn-icon btn-light btn-hover-primary btn-sm">
 																<span class="svg-icon svg-icon-md svg-icon-primary">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
 																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -122,7 +133,8 @@ export default {
   layout:"default",
   data(){
     return{
-      items:{}
+      items:{},
+      isFetching: true
     }
   },
   computed:{
@@ -141,6 +153,7 @@ export default {
           console.log(response.data)
           if (response){
             this.items = response
+            this.isFetching = false
             console.log("ok")
             // return response.data
           }

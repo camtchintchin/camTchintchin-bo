@@ -11,20 +11,30 @@
               <div class="card-body">
                 <b-row>
                   <b-col md="8">
-                    <p  class="text-white font-weight-bolder line-height-lg  name-player">{{ user.firstname }}</p>
-                    <h3  class="text-white font-weight-bolder line-height-lg mt-n5 mb-0 mb-lg-15 Poppins">{{ user.lastname }}</h3>
+                    <p  class="text-white font-weight-bolder line-height-lg  name-player">
+                      <b-skeleton v-if="isFetching" animation="wave" width="85%" height="80px"></b-skeleton>
+                      {{ user.firstname }}
+                    </p>
+                    <h3  class="text-white font-weight-bolder line-height-lg mt-n5 mb-0 mb-lg-15 Poppins">
+                      {{ user.lastname }}
+                    </h3>
                     <b-row >
                       <b-col md="6" >
                         <div class="py-2">
                           <p href="#" class="text-dark-75 font-weight-bold  font-size-lg mb-1 pb-2">Poste</p>
-                          <p class="text-muted font-weight-bold ">{{ user.user_poste }}</p>
+                          <p class="text-muted font-weight-bold ">
+                            <b-skeleton v-if="isFetching" animation="wave" width="50%" height="15px"></b-skeleton>
+                            {{ user.user_poste }}
+                          </p>
                         </div>
 
                         <div class="py-2">
                           <p href="#" class="text-dark-75 font-weight-bold  font-size-lg mb-1 pb-2">nationnalite</p>
-                          <p class="text-muted font-weight-bold ">{{ user.nationality_name }}</p>
+                          <p class="text-muted font-weight-bold ">
+                            <b-skeleton v-if="isFetching" animation="wave" width="50%" height="15px"></b-skeleton>
+                            {{ user.nationality_name }}
+                          </p>
                         </div>
-
 
                       </b-col>
                       <b-col  md="6" class="">
@@ -163,7 +173,7 @@ export default {
   name: "details-staff",
   data(){
     return{
-
+      isFetching: true,
       user:{},
       id:this.$route.params.id
     }
@@ -178,6 +188,7 @@ export default {
 
           console.log(response.data)
           if (response){
+            this.isFetching = false
             this.user = response.data.data
             console.log("ok")
             // return response.data

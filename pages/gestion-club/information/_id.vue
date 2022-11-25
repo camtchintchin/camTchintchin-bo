@@ -50,7 +50,7 @@
                   <span class="text-muted mt-3 font-weight-bold font-size-sm">10 membres enregistrés</span>
                 </h3>
                 <div class="card-toolbar">
-                  <a :href="'/gestion-club/information/gestion-staff/ajouter-un-membre/'+id" class="btn btn-success font-weight-bolder font-size-sm">
+                  <a type="button" @click="$router.push('/gestion-club/information/gestion-staff/ajouter-un-membre/'+id)" class="btn btn-success font-weight-bolder font-size-sm">
 
                     <i class=" text-dark-50 flaticon2-plus"></i>
 
@@ -97,6 +97,17 @@
                       </td>
                     </tr>
                     </tbody>
+                    <tbody v-if="isFetchingStaff" >
+                    <tr>
+                      <td colspan="7" class="text-dark-75 font-size-lg text-center">
+                        <div class="d-flex justify-content-center">
+                          <div>
+                            <b-spinner label="chargement..."></b-spinner>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
                     <tbody v-else v-for="(item, key) in listStaff">
                     <tr>
                       <td class="pl-0 py-8">
@@ -127,7 +138,7 @@
                         <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{item.email}}</span>
                       </td>
                       <td class="text-left pr-0">
-                        <a :href="'/gestion-club/information/gestion-staff/details-staff/'+item.id" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+                        <a type="button" @click="$router.push('/gestion-club/information/gestion-staff/details-staff/'+item.id)" class="btn btn-icon btn-light btn-hover-primary btn-sm">
 																<span class="svg-icon svg-icon-md svg-icon-primary">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
 																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -198,7 +209,12 @@
               <!--begin::Item-->
               <div class="d-flex align-items-center justify-content-between ">
                 <a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Nom</a>
-                <div class="font-size-sm text-muted font-weight-bold mt-1">{{clubInfo.name}}</div>
+                <div class="font-size-sm text-muted font-weight-bold mt-1">
+                  <div v-show="isFetchingClub" style="width: 100px">
+                    <b-skeleton class="w-100"></b-skeleton>
+                  </div>
+                  {{clubInfo.name}}
+                </div>
               </div>
               <!--end::Item-->
 
@@ -208,7 +224,12 @@
               <!--begin::Item-->
               <div class="d-flex align-items-center justify-content-between ">
                 <a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">E-mail</a>
-                <div class="font-size-sm text-muted font-weight-bold mt-1">{{clubInfo.email}}</div>
+                <div class="font-size-sm text-muted font-weight-bold mt-1">
+                  <div v-show="isFetchingClub" style="width: 100px">
+                    <b-skeleton class="w-100"></b-skeleton>
+                  </div>
+                  {{clubInfo.email}}
+                </div>
               </div>
               <!--end::Item-->
 
@@ -218,7 +239,12 @@
               <!--begin::Item-->
               <div class="d-flex align-items-center justify-content-between ">
                 <a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Contact</a>
-                <div class="font-size-sm text-muted font-weight-bold mt-1">{{clubInfo.contact}}</div>
+                <div class="font-size-sm text-muted font-weight-bold mt-1">
+                  <div v-show="isFetchingClub" style="width: 100px">
+                    <b-skeleton class="w-100"></b-skeleton>
+                  </div>
+                  {{clubInfo.contact}}
+                </div>
               </div>
               <!--end::Item-->
 
@@ -228,7 +254,12 @@
               <!--begin::Item-->
               <div class="d-flex align-items-center justify-content-between ">
                 <a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Localisation</a>
-                <div class="font-size-sm text-muted font-weight-bold mt-1">Abidjan/Adjame</div>
+                <div class="font-size-sm text-muted font-weight-bold mt-1">
+                  <div v-show="isFetchingClub" style="width: 100px">
+                    <b-skeleton class="w-100"></b-skeleton>
+                  </div>
+                  <span v-show="!isFetchingClub">Abidjan/Adjame</span>
+                </div>
               </div>
               <!--end::Item-->
 
@@ -238,7 +269,12 @@
               <!--begin::Item-->
               <div class="d-flex align-items-center justify-content-between">
                 <a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Président</a>
-                <div class="font-size-sm text-muted font-weight-bold mt-1">M.</div>
+                <div class="font-size-sm text-muted font-weight-bold mt-1">
+                  <div v-show="isFetchingClub" style="width: 100px">
+                    <b-skeleton class="w-100"></b-skeleton>
+                  </div>
+                  <span v-show="!isFetchingClub">M.</span>
+                </div>
 
               </div>
               <!--end::Item-->
@@ -249,7 +285,12 @@
               <!--begin::Item-->
               <div class="d-flex align-items-center justify-content-between">
                 <a href="#" class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Année de création</a>
-                <div class="font-size-sm text-muted font-weight-bold mt-1">{{clubInfo.creation_year}}</div>
+                <div class="font-size-sm text-muted font-weight-bold mt-1">
+                  <div v-show="isFetchingClub" style="width: 100px">
+                    <b-skeleton class="w-100"></b-skeleton>
+                  </div>
+                  {{clubInfo.creation_year}}
+                </div>
               </div>
               <!--end::Item-->
 
@@ -274,7 +315,7 @@
                   <span class="text-muted mt-3 font-weight-bold font-size-sm">10 joueurs enregistrés</span>
                 </h3>
                 <div class="card-toolbar">
-                  <a :href="'/gestion-club/information/gestion-joueurs/ajouter-un-joueur/'+id" class="btn btn-success font-weight-bolder font-size-sm">
+                  <a type="button" @click="$router.push('/gestion-club/information/gestion-joueurs/ajouter-un-joueur/'+id)" class="btn btn-success font-weight-bolder font-size-sm">
 
                     <i class=" text-dark-50 flaticon2-plus"></i>
 
@@ -318,6 +359,17 @@
                         </td>
                       </tr>
                     </tbody>
+                    <tbody v-if="isFetchingPlayer" >
+                    <tr>
+                      <td colspan="7" class="text-dark-75 font-size-lg text-center">
+                        <div class="d-flex justify-content-center">
+                          <div>
+                            <b-spinner label="chargement..."></b-spinner>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
                     <tbody v-for="(item, key) in listJoueur" v-else>
                       <tr>
                       <td class="pl-0 py-8">
@@ -345,7 +397,7 @@
                         <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{item.residence_country_name}}</span>
                       </td>
                       <td class="text-left pr-0">
-                        <a :href="'/gestion-club/information/gestion-joueurs/details-joueur/'+item.id" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+                        <a type="button" @click="$router.push('/gestion-club/information/gestion-joueurs/details-joueur/'+item.id)" class="btn btn-icon btn-light btn-hover-primary btn-sm">
 																<span class="svg-icon svg-icon-md svg-icon-primary">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
 																	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -473,8 +525,8 @@
           <!--begin::Nav Tabs-->
         </div>
         <div class="row pt-5">
-          <div class="col mb-4 mb-lg-0" >
-            <a href='/' class="btn  px-9 px-lg-6  pb-0 btn-red">
+          <div @click="$router.push('/')" class="col text-white mb-4 mb-lg-0" >
+            <a  class="btn  px-9 px-lg-6  pb-0 btn-red">
               <b-col>
                 <i class="icon-2x text-white-50 text-hover-dark-50 flaticon-home"></i>
               </b-col>
@@ -485,7 +537,7 @@
             </a>
           </div>
           <div class="col mb-4 mb-lg-0" >
-            <a onclick="history.back()" href="#" class="btn  px-6 py-3 btn-yellow">
+            <a @click="$router.back()" class="btn text-white px-6 py-3 btn-yellow">
               <b-col>
                 <i class="icon-2x text-white-50 flaticon2-left-arrow-1"></i>
               </b-col>
@@ -535,7 +587,10 @@ export default Vue.extend({
       clubInfo:{},
       listJoueur:{},
       listStaff:{},
-      id:this.$route.params.id
+      id:this.$route.params.id,
+      isFetchingClub: true,
+      isFetchingStaff: true,
+      isFetchingPlayer: true
     }
   },
   computed:{
@@ -559,6 +614,7 @@ export default Vue.extend({
         .catch((error) => {
           //console.log(error)
         })
+      this.isFetchingClub=false
     },
     async ListJoueur(){
       const data ={
@@ -573,6 +629,7 @@ export default Vue.extend({
           console.log(response.data)
           if (response){
             this.listJoueur = response.data.data
+            this.isFetchingPlayer=false
             console.log("ok")
             // return response.data
           }
@@ -594,6 +651,7 @@ export default Vue.extend({
           console.log(response.data)
           if (response){
             this.listStaff = response.data.data
+            this.isFetchingStaff=false
             console.log("ok")
             // return response.data
           }

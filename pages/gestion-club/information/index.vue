@@ -50,7 +50,7 @@
                   <span class="text-muted mt-3 font-weight-bold font-size-sm">10 membres enregistrés</span>
                 </h3>
                 <div class="card-toolbar">
-                  <a href="/gestion-club/information/gestion-staff/ajouter-un-membre" class="btn btn-success font-weight-bolder font-size-sm">
+                  <a type="button" @click="$router.push('/gestion-club/information/gestion-staff/ajouter-un-membre')" class="btn btn-success font-weight-bolder font-size-sm">
 
                     <i class=" text-dark-50 flaticon2-plus"></i>
 
@@ -365,7 +365,7 @@
                   <span class="text-muted mt-3 font-weight-bold font-size-sm">10 joueurs enregistrés</span>
                 </h3>
                 <div class="card-toolbar">
-                  <a href="/gestion-club/information/gestion-joueurs/ajouter-un-joueur" class="btn btn-success font-weight-bolder font-size-sm">
+                  <a type="button" @click="$router.push('/gestion-club/information/gestion-joueurs/ajouter-un-joueur')" class="btn btn-success font-weight-bolder font-size-sm">
 
                     <i class=" text-dark-50 flaticon2-plus"></i>
 

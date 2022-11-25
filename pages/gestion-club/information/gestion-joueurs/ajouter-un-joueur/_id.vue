@@ -96,8 +96,15 @@
             <div class="row">
               <div class="col-lg-5"></div>
               <div class="col-lg-7">
-                <button type="submit" class="btn-blue mr-2 p-4" @click.prevent="createPLayer">Valider</button>
-                <a type="button" href="#" onclick="history.back()" class="btn-yellow p-4">Retour</a>
+                <button type="submit" class="btn-blue mr-2 p-4" @click.prevent="createPLayer">
+                  <span v-if="this.isSubmit" class="d-flex justify-content-center">
+                    <span>
+                      <b-spinner label="chargement..."></b-spinner>
+                    </span>
+                  </span>
+                  <span v-if="!this.isSubmit">Valider</span>
+                </button>
+                <a type="button" href="#" @click="$router.back()" class="btn-yellow p-4">Retour</a>
               </div>
             </div>
           </div>
@@ -138,6 +145,7 @@ export default {
     return{
       id:this.$route.params.id,
       selected: null,
+      isSubmit: false,
       listCountries:[
         {
           value: null,
@@ -254,15 +262,15 @@ export default {
       })
     },
 
-    createPLayer(){
+    async createPLayer(){
       // return this.$bvModal.show('modalForm');
-
+      this.isSubmit = true
       // console.log("create club")
       this.form.country_id=this.form.residence_country
       // this.form.nationality=this.form.residence_country
       const data = this.form
       console.log("data xend",data)
-      this.$axios
+      await this.$axios
         .$post('v1/users',data)
         .then((response) => {
           console.log("stat",response.data.status)
@@ -289,6 +297,7 @@ export default {
         .catch((error) => {
           //console.log(error)
         })
+      this.isSubmit = false
     },
     closeModal(){
       history.back()

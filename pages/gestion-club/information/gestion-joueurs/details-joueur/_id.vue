@@ -174,7 +174,7 @@
                   <span class="text-muted mt-3 font-weight-bold font-size-sm">10 clubs</span>
                 </h3>
                 <div class="card-toolbar">
-                  <a href="/gestion-club/information/ajouter-un-joueur" class="btn btn-success font-weight-bolder font-size-sm">
+                  <a type="button" @click="$router.push('/gestion-club/information/ajouter-un-joueur')" class="btn btn-success font-weight-bolder font-size-sm">
 
                     <i class=" text-dark-50 flaticon2-plus"></i>
 
